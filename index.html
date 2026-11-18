@@ -117,7 +117,7 @@ ul{margin:0 0 1em;padding-left:1.2em}
   .dd-panel strong{display:block;font-family:var(--f-head);font-size:.92rem}
   .dd-panel span{display:block;font-size:.88rem;color:var(--muted);line-height:1.35}
 }
-@media (min-width:1200px){.hdr-cta{display:inline-flex}}
+@media (min-width:1340px){.hdr-cta{display:inline-flex;white-space:nowrap}}
 @media (max-width:379px){.brand .mk{width:46px}.brand .wm{width:122px}.menu-btn{padding:0 10px}}
 
 /* hero */
@@ -545,6 +545,20 @@ main:focus,.success:focus,[tabindex="-1"]:focus{outline:none}
 .sec-head .btn-row{gap:18px}
 .tour .btn-row{flex-direction:column;gap:10px}
 .tour .btn{width:100%;flex:none}
+
+.jpay{font-family:var(--f-head);font-weight:800;color:var(--plum);font-size:1.08rem;line-height:1.3}
+.jben{margin:0;font-size:.94rem;color:var(--muted);line-height:1.45}
+.jben b{color:var(--ink);font-weight:600}
+.offer{display:flex;flex-direction:column;gap:6px}
+.offer h3{margin:6px 0 4px}
+.offer .tag{align-self:flex-start}
+.offer .btn{margin-top:auto;align-self:flex-start}
+.gap-bottom{margin-bottom:40px}
+.job{display:flex;flex-direction:column}
+.job-foot{margin-top:auto;padding-top:4px}
+
+.nav>a,.nav .dd>button{white-space:nowrap}
+@media (min-width:1040px) and (max-width:1199px){.nav>a,.nav .dd>button{padding:10px 9px;font-size:.9rem}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233248198503","+233249393247"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
 </head>
@@ -592,7 +606,7 @@ const CO = {
 };
 
 const GROUPS = [
-  { key: 'jobs', label: 'Jobs', items: ['jobs-abroad', 'local-jobs'] },
+  { key: 'jobs', label: 'Jobs and study', items: ['jobs-abroad', 'local-jobs', 'study-abroad'] },
   { key: 'travel', label: 'Travel', items: ['air-ticketing', 'travel-visas', 'local-tours', 'international-tours'] },
   { key: 'documents', label: 'Documents', items: ['passport', 'birth-certificate'] },
   { key: 'business', label: 'Business', items: ['business-consultancy', 'recruitment-for-employers', 'talent-management'] }
@@ -601,6 +615,7 @@ const GROUPS = [
 const SERVICES = {
   'jobs-abroad': { name: 'Jobs abroad', icon: 'briefcase', group: 'jobs', blurb: 'Work openings in other countries, with honest help on documents and visas.', wa: 'Hello Carl-C, I want to apply for a job abroad.' },
   'local-jobs': { name: 'Local jobs', icon: 'pin', group: 'jobs', blurb: 'Openings with employers across Ghana, matched to your skills.', wa: 'Hello Carl-C, I am looking for a job in Ghana.' },
+  'study-abroad': { name: 'Study abroad', icon: 'grad', group: 'jobs', blurb: 'Admission and student-visa help for the USA, Canada, the UK, Australia and Germany.', wa: 'Hello Carl-C, I want to study abroad.' },
   'air-ticketing': { name: 'Air ticketing', icon: 'plane', group: 'travel', blurb: 'Flights out of Ghana to wherever you need to be, paid your way.', wa: 'Hello Carl-C, I want to book a flight.' },
   'travel-visas': { name: 'Travel services and visas', icon: 'globe', group: 'travel', blurb: 'Visa applications, document checks and interview preparation.', wa: 'Hello Carl-C, I need help with a visa application.' },
   'local-tours': { name: 'Local tours', icon: 'compass', group: 'travel', blurb: 'Guided trips to Ghana’s castles, forests, waterfalls and parks.', wa: 'Hello Carl-C, I want to book a tour.' },
@@ -622,16 +637,24 @@ const STAGES = {
   tour: ['Request received', 'Quote sent', 'Deposit paid', 'Visa and bookings in progress', 'Ready to travel'],
   general: ['Request received', 'We are reviewing it', 'In progress', 'Completed']
 };
-const STAGE_SET = { 'jobs-abroad': 'job', 'local-jobs': 'job', 'passport': 'passport', 'birth-certificate': 'birth', 'travel-visas': 'visa', 'air-ticketing': 'flight', 'local-tours': 'tour', 'international-tours': 'tour' };
+const STAGE_SET = { 'study-abroad': 'visa', 'jobs-abroad': 'job', 'local-jobs': 'job', 'passport': 'passport', 'birth-certificate': 'birth', 'travel-visas': 'visa', 'air-ticketing': 'flight', 'local-tours': 'tour', 'international-tours': 'tour' };
 
 /* Job board — sample listings until staff post real ones */
 const JOBS = [
-  { id: 'j1', type: 'abroad', title: 'Hotel room attendant', country: 'United Arab Emirates', city: 'Dubai', sector: 'Hospitality', contract: '2-year contract', pay: 'Salary shared at interview', reqs: ['SHS certificate or equivalent', 'At least 1 year of hotel or cleaning experience', 'Spoken English'], deadline: '2026-12-18', sample: true },
-  { id: 'j2', type: 'abroad', title: 'Steel fixer', country: 'Qatar', city: 'Doha', sector: 'Construction', contract: '2-year contract', pay: 'Salary shared at interview', reqs: ['3 years of site experience', 'Trade test at interview', 'Valid passport'], deadline: '2026-12-31', sample: true },
-  { id: 'j3', type: 'abroad', title: 'Warehouse operative', country: 'Poland', city: 'Łódź', sector: 'Logistics', contract: '12-month contract', pay: 'Salary shared at interview', reqs: ['Basic English', 'Physically fit for lifting work', 'Forklift licence is a plus'], deadline: '2027-01-15', sample: true },
-  { id: 'j4', type: 'abroad', title: 'Heavy-duty truck driver', country: 'Saudi Arabia', city: 'Riyadh', sector: 'Driving', contract: '2-year contract', pay: 'Salary shared at interview', reqs: ['Valid Ghana heavy-goods driving licence', '4 years of heavy-duty driving', 'Clean driving record'], deadline: '2027-01-08', sample: true },
-  { id: 'j5', type: 'abroad', title: 'Security officer', country: 'Qatar', city: 'Doha', sector: 'Security', contract: '2-year contract', pay: 'Salary shared at interview', reqs: ['Height 1.70m and above', '2 years in security work', 'Police report'], deadline: '2026-12-22', sample: true },
-  { id: 'j6', type: 'abroad', title: 'Commis chef', country: 'United Arab Emirates', city: 'Abu Dhabi', sector: 'Hospitality', contract: '2-year contract', pay: 'Salary shared at interview', reqs: ['Catering certificate', '2 years in a hotel or restaurant kitchen', 'Food hygiene knowledge'], deadline: '2027-01-20', sample: true },
+  { id: 'a1', type: 'abroad', title: 'Cleaners (men and women)', city: 'Dubai', country: 'United Arab Emirates', sector: 'Cleaning', contract: 'No interview', pay: '1,300 AED a month + 200 AED allowance', fee: 300, reqs: ['CV', 'Passport copy and passport picture', 'Medical report', 'Police report'], benefits: ['free accommodation', 'free food', 'free transport', 'free medication'] },
+  { id: 'a2', type: 'abroad', title: 'Cleaners, men only', city: '', country: 'United Arab Emirates', sector: 'Cleaning', contract: 'Open to applicants across Africa', pay: 'AED 1,000 a month for 11-hour days, 1 day off a week', reqs: ['CV and recent photograph', 'Passport copy', 'Medical report', 'Police clearance certificate', 'Assignment form (company format)'], benefits: ['accommodation and transport from the company', 'employment visa'], process: 'Visa in 12 to 15 days. You must fly within 10 days of the visa.' },
+  { id: 'a3', type: 'abroad', title: 'Warehouse helpers', city: 'Dubai', country: 'United Arab Emirates', sector: 'Logistics', contract: '', pay: '1,200 AED a month', fee: 300, reqs: ['CV', 'Passport copy and passport picture', 'Medical report', 'Police report'], benefits: ['free accommodation', 'free food', 'free transport', 'free medication'] },
+  { id: 'a4', type: 'abroad', title: 'Airport loaders and concierge', city: 'Dubai', country: 'United Arab Emirates', sector: 'Aviation', contract: '2-year contract, 6-month probation', pay: 'AED 1,075 a month + 3 hours overtime', fee: 300, reqs: ['8-hour days, 1 day off a week', 'Direct employment with the company', 'Company-sponsored UAE employment visa', 'No interview'], benefits: ['accommodation, transport and kitchen from the employer', 'medical and leave benefits'] },
+  { id: 'a5', type: 'abroad', title: 'Security guards', city: '', country: 'United Arab Emirates', sector: 'Security', contract: 'Men aged 18 to 40', pay: 'AED 1,500 to 1,850 a month', fee: 300, reqs: ['CV', 'Passport copy and passport picture', 'Medical report', 'Police report'], benefits: ['free accommodation', 'free food', 'free transport', 'free medication', 'leave salary'] },
+  { id: 'a6', type: 'abroad', title: 'Delivery riders, motorbike and bicycle', city: 'Dubai', country: 'United Arab Emirates', sector: 'Delivery', contract: '', pay: 'GH₵14,000 to GH₵18,000 a month', fee: 300, reqs: ['CV', 'Passport copy and passport picture', 'Medical report', 'Police report', 'Riding licence'], benefits: ['free accommodation', 'free food', 'free transport', 'free medication'] },
+  { id: 'a7', type: 'abroad', title: 'Taxi drivers', city: 'Dubai, Sharjah and Abu Dhabi', country: 'United Arab Emirates', sector: 'Driving', contract: '2-year contract', pay: '3,000 to 3,500 AED a month', fee: 300, reqs: ['Passport and passport picture', 'Medicals', 'Driving licence', 'Online interviews are ongoing'], benefits: ['accommodation', 'free transport', 'medical care', 'food allowance', 'employment visa'] },
+  { id: 'a8', type: 'abroad', title: 'Light-duty taxi drivers', city: 'Abu Dhabi', country: 'United Arab Emirates', sector: 'Driving', contract: '2-year contract', pay: 'GH₵10,000 to GH₵17,000 a month + commission', reqs: ['Valid passport and passport picture', 'Updated CV', 'Fluent English', 'Medical report', 'Driving licence'], benefits: ['accommodation', 'free transport', 'medical care', 'food allowance', 'employment visa'] },
+  { id: 'a9', type: 'abroad', title: 'Delivery bike riders', city: '', country: 'Qatar', sector: 'Delivery', contract: 'About 7 days to process', pay: '1,600 QR a month', fee: 300, reqs: ['Passport and passport picture', 'Medicals', 'Riding licence', 'Online interviews are ongoing'] },
+  { id: 'a10', type: 'abroad', title: 'Laundry workers, men', city: '', country: 'Oman', sector: 'Laundry', contract: '1 to 2 weeks to process', pay: '120 to 170 OMR a month', reqs: ['Passport and passport picture', 'GCC medical'], benefits: ['accommodation', 'food'] },
+  { id: 'a11', type: 'abroad', title: 'Mechanics, auto electricians, sprayers and panel beaters', city: '', country: 'Oman', sector: 'Automotive', contract: '', pay: '200 OMR a month', fee: 300, reqs: ['CV', 'Passport copy and passport picture', 'Medical report and GCC medicals', 'Police report'], benefits: ['free accommodation', 'free food', 'free transport', 'free medication'] },
+  { id: 'a12', type: 'abroad', title: 'Car drivers and bike riders', city: '', country: 'Serbia', sector: 'Driving', contract: 'Return ticket after the contract', pay: '€1,200 to €1,500 a month', reqs: ['Car drivers: a valid driving licence', 'Bike riders: a GCC or Ghana licence', 'Good driving experience', 'Physically fit and healthy'], benefits: ['free accommodation', 'free transport', 'medical insurance', 'legal work permit'] },
+  { id: 'a13', type: 'abroad', title: 'Teachers', city: '', country: 'Thailand', sector: 'Education', contract: 'You buy your own flight ticket', pay: '$700 a month', reqs: ['Degree certificate and transcript', 'Passport and passport picture', 'CV and an introduction video', 'Police report', 'Yellow fever and COVID-19 cards'], benefits: ['1 month of accommodation'], process: 'You pay after your visa is issued, or through a joint account.' },
+  { id: 'a14', type: 'abroad', title: 'Teachers', city: '', country: 'United States', sector: 'Education', contract: 'Interview required', pay: 'Salary shared at interview', fee: 'applies', reqs: ['Degree', 'CV', 'Passport and passport picture'] },
   { id: 'l1', type: 'local', title: 'Sales executive', country: 'Ghana', city: 'Accra', sector: 'Sales', contract: 'Full time', pay: 'Salary plus commission', reqs: ['HND or degree', '1 year in sales', 'Own smartphone'], deadline: '2026-12-12', sample: true },
   { id: 'l2', type: 'local', title: 'Front desk officer', country: 'Ghana', city: 'Takoradi', sector: 'Hospitality', contract: 'Full time', pay: 'Salary shared at interview', reqs: ['Diploma or HND', 'Warm, clear communicator', 'Shift work'], deadline: '2026-12-15', sample: true },
   { id: 'l3', type: 'local', title: 'Accounts assistant', country: 'Ghana', city: 'Kumasi', sector: 'Finance', contract: 'Full time', pay: 'Salary shared at interview', reqs: ['Degree in accounting', 'QuickBooks or Tally', '1 year of experience'], deadline: '2026-12-20', sample: true },
@@ -681,10 +704,11 @@ const VISA_COMMON = ['Valid passport with blank pages', 'Recent passport photos 
 
 /* Fees — Carl-C service fees to be confirmed */
 const FEES = [
-  { svc: 'Job abroad application', ours: null, other: 'Medicals, police report, visa and flight, paid to each provider' },
+  { svc: 'Job abroad application', ours: 'GH₵300 registration fee for most jobs', other: 'Medicals, police report, visa and flight, paid to each provider' },
+  { svc: 'Study abroad', ours: null, other: 'University application and student-visa fees' },
   { svc: 'Local job placement', ours: null, other: 'None' },
   { svc: 'Air ticket booking', ours: null, other: 'Airline fare and taxes' },
-  { svc: 'Visa application support', ours: null, other: 'Embassy and visa centre fees' },
+  { svc: 'Visa application support', ours: null, other: 'Embassy and visa centre fees. For Canada visitor visas, our fee is paid after the visa is issued' },
   { svc: 'Local tour', ours: 'Price per person shown on each package', other: 'Included in the package price' },
   { svc: 'International tour', ours: 'Price per person shown on each package', other: 'Embassy visa fees, paid to the embassy' },
   { svc: 'Passport application', ours: null, other: 'Government fee from GH₵350 (standard 32-page booklet)' },
@@ -695,7 +719,7 @@ const FEES = [
 ];
 
 const FAQ = [
-  { q: 'Is Carl-C a licensed recruitment agency?', a: '<p>Carl-C Limited Company is registered with the Registrar of Companies (no. CS039450324) and is VAT registered with the GRA. Our Private Employment Agency licence number and its expiry date are shown on our About page.</p><p>Before you pay any agency, ask to see its licence. Operating a recruitment agency without a licence from the Labour Minister is illegal in Ghana.</p>' },
+  { q: 'Is Carl-C a licensed recruitment agency?', a: '<p>Carl-C Limited Company is registered with the Registrar of Companies (no. CS039450324) and is VAT registered with the GRA. We recruit for jobs abroad through our partner GUF Dream Consult Ltd, whose Private Employment Agency licence number and expiry date are shown on our About page.</p><p>Before you pay any agency, ask to see its licence. Operating a recruitment agency without a licence from the Labour Minister is illegal in Ghana.</p>' },
   { q: 'Can you guarantee me a visa or a job abroad?', a: '<p>No, and nobody honest can. Embassies decide who gets a visa and employers decide who they hire. We make sure your application is complete, correct and on time.</p>' },
   { q: 'How much do your services cost?', a: '<p>Our <a href="#/fees">fees page</a> lists our service fee for each service. Government, embassy and airline fees are separate and go to those bodies. You get an official Carl-C receipt for every payment.</p>' },
   { q: 'How do I pay?', a: '<p>Mobile Money, Visa or Mastercard through our secure online checkout, bank transfer to the company account, or cash at our office. We never ask you to pay into a personal account.</p>' },
@@ -766,6 +790,7 @@ const P = {
   receipt: '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
   card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>',
   suitcase: '<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7M9 11v5M15 11v5"/>',
+  grad: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'
 };
 const WA = '<path fill="currentColor" stroke="none" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.9a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.5-6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/>';
@@ -780,6 +805,8 @@ const fmtDate = iso => new Date(iso.length === 10 ? iso + 'T12:00:00' : iso).toL
 const sampleTag = s => s ? '<span class="tag tag-sample">Sample</span>' : '';
 const telHref = p => 'tel:+233' + p.replace(/\s/g, '').replace(/^0/, '');
 const svcLink = k => '#/' + k;
+const jobWhere = j => j.type === 'abroad' ? (j.city ? `${j.city}, ${j.country}` : j.country) : j.city;
+const jobLabel = j => `${j.title}, ${j.city || j.country}`;
 const first = n => String(n || '').trim().split(/\s+/)[0] || 'there';
 
 /* ---------- storage (preview only: lives in this browser) ---------- */
@@ -830,7 +857,7 @@ function stub() {
       <div class="stub-item"><small>Company registration</small><b>${r.company}</b><i>Registrar of Companies, 2024</i></div>
       <div class="stub-item"><small>VAT registration</small><b>${r.tin}</b><i>Ghana Revenue Authority</i></div>
       <div class="stub-item"><small>Business name</small><b>${r.bn}</b><i>${r.bnName}, 2023</i></div>
-      <div class="stub-item"><small>Recruitment licence</small><b>${CO.pea ? CO.pea.no : tbc('Licence no.')}</b><i>Labour Department${CO.pea ? ', valid to ' + CO.pea.expires : ''}</i></div>
+      <div class="stub-item"><small>Recruitment licence</small><b>${CO.pea ? CO.pea.no : tbc('Licence no.')}</b><i>GUF Dream Consult Ltd${CO.pea ? ', valid to ' + CO.pea.expires : ''}</i></div>
     </div><div class="stub-foot"><a class="textlink" href="#/about?to=registrations">See our certificates ${ic('chevR')}</a></div></div>`;
 }
 
@@ -853,14 +880,17 @@ const STEPS = [
 const stepsList = (arr = STEPS) => `<ol class="steps">${arr.map(([h, p]) => `<li><h3>${h}</h3><p>${p}</p></li>`).join('')}</ol>`;
 
 function jobCard(j, link) {
-  const where = j.type === 'abroad' ? `${j.city}, ${j.country}` : j.city;
   const action = link
     ? `<a class="btn btn-sm btn-plum" href="#/${j.type === 'abroad' ? 'jobs-abroad' : 'local-jobs'}?job=${j.id}&to=apply">Apply for this job</a>`
     : `<button type="button" class="btn btn-sm btn-plum" data-apply="${j.id}">Apply for this job</button>`;
+  const foot = j.fee === 300 ? 'Registration fee GH₵300' : j.fee === 'applies' ? 'Registration fee applies' : j.deadline ? `Apply by ${fmtDate(j.deadline)}` : 'Open now';
   return `<article class="job"><div class="job-top"><div><h3>${esc(j.title)}</h3>
-    <div class="meta"><span>${ic('pin')}${esc(where)}</span><span>${ic('briefcase')}${esc(j.sector)}</span><span>${ic('clock')}${esc(j.contract)}</span></div></div>${sampleTag(j.sample)}</div>
+    <div class="meta"><span>${ic('pin')}${esc(jobWhere(j))}</span><span>${ic('briefcase')}${esc(j.sector)}</span>${j.contract ? `<span>${ic('clock')}${esc(j.contract)}</span>` : ''}</div></div>${sampleTag(j.sample)}</div>
+    ${j.pay ? `<div class="jpay">${esc(j.pay)}</div>` : ''}
     <ul>${j.reqs.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
-    <div class="job-foot"><small>Apply by ${fmtDate(j.deadline)}</small>${action}</div></article>`;
+    ${j.benefits ? `<p class="jben"><b>Benefits:</b> ${esc(j.benefits.join(', '))}</p>` : ''}
+    ${j.process ? `<p class="jben"><b>Process:</b> ${esc(j.process)}</p>` : ''}
+    <div class="job-foot"><small>${foot}</small>${action}</div></article>`;
 }
 function board(type) {
   const key = type === 'abroad' ? 'country' : 'city';
@@ -932,7 +962,7 @@ const svcOptions = () => [...Object.values(SERVICES).map(s => s.name), 'General 
 const FORMS = {
   'jobs-abroad': { title: 'Apply for a job abroad', intro: 'Send your details and CV. We reply within one working day.', submit: 'Send application', done: 'Application sent',
     fields: [F.name, F.phone, F.email,
-      { n: 'job', l: 'Job you are applying for', t: 'select', req: 1, opts: () => ['Any suitable job', ...allJobs().filter(j => j.type === 'abroad').map(j => `${j.title}, ${j.city}`)] },
+      { n: 'job', l: 'Job you are applying for', t: 'select', req: 1, opts: () => ['Any suitable job', ...allJobs().filter(j => j.type === 'abroad').map(j => `${jobLabel(j)}`)] },
       { n: 'experience', l: 'Years of experience in this work', t: 'select', req: 1, opts: ['Less than 1 year', '1 to 2 years', '3 to 5 years', 'More than 5 years'] },
       { n: 'passportStatus', l: 'Do you have a valid passport?', t: 'radios', req: 1, full: 1, opts: ['Yes', 'It expires soon', 'No'] },
       { n: 'cv', l: 'Your CV', t: 'file', req: 1, accept: '.pdf,.doc,.docx', hint: 'PDF or Word, up to 5 MB' },
@@ -940,7 +970,7 @@ const FORMS = {
       F.msg] },
   'local-jobs': { title: 'Apply for a job in Ghana', intro: 'Choose a job or send your CV for future openings.', submit: 'Send application', done: 'Application sent',
     fields: [F.name, F.phone, F.email,
-      { n: 'job', l: 'Job you are applying for', t: 'select', req: 1, opts: () => ['Any suitable job', ...allJobs().filter(j => j.type === 'local').map(j => `${j.title}, ${j.city}`)] },
+      { n: 'job', l: 'Job you are applying for', t: 'select', req: 1, opts: () => ['Any suitable job', ...allJobs().filter(j => j.type === 'local').map(j => `${jobLabel(j)}`)] },
       { n: 'town', l: 'Town you live in', t: 'text', req: 1 },
       { n: 'cv', l: 'Your CV', t: 'file', req: 1, accept: '.pdf,.doc,.docx', hint: 'PDF or Word, up to 5 MB', full: 1 },
       F.msg] },
@@ -980,6 +1010,14 @@ const FORMS = {
       { n: 'adults', l: 'Adults', t: 'number', min: 1, val: 2 }, { n: 'children', l: 'Children (under 12)', t: 'number', min: 0, val: 0 },
       { n: 'budget', l: 'Budget per person', t: 'select', opts: ['Under GH₵15,000', 'GH₵15,000 to GH₵25,000', 'GH₵25,000 to GH₵40,000', 'Over GH₵40,000'] },
       { n: 'pass', l: 'Do you have a valid passport?', t: 'radios', req: 1, full: 1, opts: ['Yes', 'It expires within a year', 'Not yet'] },
+      F.msg] },
+  'study-abroad': { title: 'Apply to study abroad', intro: 'Tell us what you want to study and where. We reply with schools, costs and the next steps.', submit: 'Send application', done: 'Application sent',
+    fields: [F.name, F.phone, F.email,
+      { n: 'level', l: 'Level', t: 'radios', req: 1, opts: ['Bachelor’s degree', 'Master’s degree', 'Belarus study and work'], full: 1 },
+      { n: 'country', l: 'Country', t: 'select', req: 1, opts: ['United States', 'Canada', 'United Kingdom', 'Australia', 'Germany', 'Belarus', 'Not sure yet'] },
+      { n: 'course', l: 'Course you want to study', t: 'text', ph: 'For example nursing or computer science' },
+      { n: 'cv', l: 'Your CV', t: 'file', accept: '.pdf,.doc,.docx', hint: 'PDF or Word, up to 5 MB' },
+      { n: 'certs', l: 'WASSCE or degree certificate', t: 'file', accept: 'image/*,.pdf', hint: 'Photo or PDF, up to 5 MB' },
       F.msg] },
   'passport': { title: 'Request passport help', intro: 'Upload what you have now. We tell you if anything is missing before you pay.', submit: 'Send request', done: 'Request sent',
     fields: [F.name, F.phone, F.email,
@@ -1114,7 +1152,7 @@ function submitForm(form) {
 
 /* ---------- eligibility checker ---------- */
 const QZ = [
-  { q: 'Where would you like to work?', o: ['UAE, Qatar or Saudi Arabia', 'Europe', 'Canada', 'United Kingdom', 'Not sure yet'] },
+  { q: 'Where would you like to work?', o: ['UAE, Qatar or Oman', 'Europe, such as Serbia', 'Asia, such as Thailand', 'United States', 'Not sure yet'] },
   { q: 'How old are you?', o: ['18 to 24', '25 to 35', '36 to 45', '46 or older'] },
   { q: 'What is your highest qualification?', o: ['JHS or below', 'SHS or WASSCE', 'Technical or vocational certificate', 'Diploma or HND', 'Degree or higher'] },
   { q: 'How many years have you worked in your trade or profession?', o: ['None yet', 'Less than 2 years', '2 to 5 years', 'More than 5 years'] },
@@ -1137,7 +1175,7 @@ function drawQuiz(el, step = 0, ans = []) {
   const tips = [];
   if (pass > 0) tips.push(`Get your passport sorted first, since every overseas employer needs it. <a href="#/passport">We can help with that.</a>`);
   if (exp === 0) tips.push(`Most overseas employers ask for at least 1 to 2 years of experience. <a href="#/local-jobs">A job in Ghana</a> can help you build it.`);
-  if (c >= 1 && c <= 3) tips.push('Jobs in Europe, Canada and the UK usually need proof of skills and good English. We will explain what applies to your trade.');
+  if (c >= 1 && c <= 3) tips.push('Jobs in Europe, Asia and the US often need proof of skills, and teaching jobs need a degree. We will tell you what applies to your trade.');
   if (c === 4) tips.push('Not sure where to go? We will suggest countries that hire people with your skills.');
   if (age === 3) tips.push('Some employers set age limits. We will show you openings without one.');
   el.innerHTML = `<div class="quiz-bar"><i style="width:100%"></i></div><span class="result-level">${lvl[0]}</span><p class="lead">${lvl[1]}</p>
@@ -1195,7 +1233,8 @@ page('jobs-abroad', {
   desc: 'Current job openings abroad from a registered Ghanaian recruitment company. Check your eligibility and apply with your CV.',
   html: () => `${phero({ group: 'jobs', title: 'Jobs abroad', lead: 'Real openings with overseas employers, honest advice on what you qualify for, and help with every document, from your CV to your visa.', ctas: jump('quiz', 'Check your eligibility') + jump('apply', 'Apply now', 'btn btn-ghost') })}
   <section class="sec"><div class="wrap">
-    ${notice(`<p><b>Licensed recruitment.</b> Carl-C recruits for jobs abroad under Private Employment Agency licence no. ${CO.pea ? CO.pea.no : tbc()}, valid until ${CO.pea ? CO.pea.expires : tbc()}. You can confirm any agency’s licence with the Labour Department.</p>`, '', 'shield')}
+    ${notice(`<p><b>Licensed recruitment.</b> We recruit for jobs abroad through our partner GUF Dream Consult Ltd, under Private Employment Agency licence no. ${CO.pea ? CO.pea.no : tbc()}, valid until ${CO.pea ? CO.pea.expires : tbc()}. You can confirm any agency’s licence with the Labour Department.</p>`, '', 'shield')}
+    ${notice(`<p><b>Registration fee.</b> Most jobs have a GH₵300 registration fee, paid to the company with an official receipt. If we cannot place you within ${tbc('agreed period')}, we refund at least half of the fees you paid, as the Labour Act requires.</p>`, 'notice-gold', 'receipt')}
     ${secHead('Current openings', 'Filter by country and sector, then apply for the job that fits you.')}
     ${board('abroad')}
   </div></section>
@@ -1210,7 +1249,7 @@ page('jobs-abroad', {
     ${notice('<p>Pay only into the company account or at our office, and always collect an official receipt.</p>', 'notice-gold', 'alert')}</div>
   </div></section>`,
   init(q) {
-    if (q.job) { const j = allJobs().find(x => x.id === q.job); const sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${j.title}, ${j.city}`; }
+    if (q.job) { const j = allJobs().find(x => x.id === q.job); const sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${jobLabel(j)}`; }
   }
 });
 
@@ -1224,7 +1263,7 @@ page('local-jobs', {
   <section class="sec"><div class="wrap split">
     <div><h2>Hiring in Ghana?</h2><p class="lead">Post your vacancy and we send you a shortlist of screened candidates.</p>${ticks(['We advertise the role and receive applications', 'We check CVs, certificates and references', 'You interview only the strongest candidates'])}<a class="textlink" href="#/recruitment-for-employers">More on recruitment for employers ${ic('chevR')}</a></div>
     ${formHTML('post-vacancy', 'post')}</div></section>`,
-  init(q) { if (q.job) { const j = allJobs().find(x => x.id === q.job); const sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${j.title}, ${j.city}`; } }
+  init(q) { if (q.job) { const j = allJobs().find(x => x.id === q.job); const sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${jobLabel(j)}`; } }
 });
 
 page('talent-management', {
@@ -1260,6 +1299,12 @@ page('travel-visas', {
   html: () => `${phero({ group: 'travel', title: 'Visas and travel', crumb: 'Travel and visas', lead: 'We check your documents, complete your forms, book your appointments and prepare you for the interview.', ctas: jump('apply', 'Book a consultation') + btnWA(SERVICES['travel-visas'].wa, 'WhatsApp us', 'btn-ghost') })}
   <section class="sec"><div class="wrap">
     ${notice('<p><b>No false guarantees.</b> Embassies alone decide who gets a visa. We make sure your application is complete, correct and on time, which gives it the best chance.</p>', 'notice-gold', 'alert')}
+    ${secHead('Current visa offers', 'Visa applications we are taking right now.')}
+    <div class="cards3 gap-bottom">
+      <div class="box offer"><span class="tag">Canada</span><h3>Visitor visa for a conference</h3>${ticks(['Passport and passport picture', 'Birth certificate and Ghana Card', 'Bank statement', 'Visa fee C$185, paid by card'])}<p class="muted">Our service fee is paid after your visa is issued.</p>${btnWA('Hello Carl-C, I am interested in the Canada conference visitor visa.', 'Ask about this offer', 'btn-sm')}</div>
+      <div class="box offer"><span class="tag">Europe</span><h3>Schengen visa</h3>${ticks(['Italy, Spain, France, Germany and the Netherlands', 'One visa for travel across the Schengen area', 'Appointment slots available now', 'We prepare your file and book your appointment'])}${btnWA('Hello Carl-C, I want to apply for a Schengen visa.', 'Ask about this offer', 'btn-sm')}</div>
+      <div class="box offer"><span class="tag">Belarus</span><h3>Business visa</h3>${ticks(['For business, investment and trade trips', 'Processing usually takes about 1 week', 'Help with your invitation and documents'])}${btnWA('Hello Carl-C, I am interested in the Belarus business visa.', 'Ask about this offer', 'btn-sm')}</div>
+    </div>
     ${secHead('Visa help by country', 'Choose your destination to see how the process works and a checklist of usual documents.')}
     <div class="tabs chips" role="tablist">${VISAS.map((v, i) => `<button type="button" class="chip" role="tab" aria-pressed="${i === 0}" data-visa="${v.key}">${v.name}</button>`).join('')}</div>
     <div class="split" data-visa-out></div>
@@ -1302,6 +1347,27 @@ page('international-tours', {
   <section class="sec"><div class="wrap split wide-left">${formHTML('international-tours')}
     <div><h2>Good to know</h2><p>${tbc('Package terms to confirm')}</p>${ticks(['Your passport must be valid for at least 6 months after you return', 'Flights and hotels are confirmed once your deposit is paid', 'Embassy visa fees are paid to the embassy and are not refundable', 'Pay with Mobile Money, card, bank transfer or cash, with an official receipt'])}</div></div></section>`,
   init(q) { if (q.trip) { const t = INTL_TOURS.find(x => x.id === q.trip), sel = $('#apply select[name=trip]'); if (t && sel) sel.value = t.name; } }
+});
+
+page('study-abroad', {
+  title: 'Study abroad', group: 'jobs', wa: SERVICES['study-abroad'].wa,
+  desc: 'Admission and student-visa help for universities in the USA, Canada, the UK, Australia and Germany, plus a study and work programme in Belarus.',
+  html: () => `${phero({ group: 'jobs', title: 'Study abroad', lead: 'We help you choose a school, prepare your application and apply for your student visa in the USA, Canada, the UK, Australia or Germany.', ctas: jump('apply', 'Apply now') + btnWA(SERVICES['study-abroad'].wa, 'WhatsApp us', 'btn-ghost') })}
+  <section class="sec"><div class="wrap">
+    ${notice('<p><b>No false guarantees.</b> Universities decide who they admit and embassies decide visas. Each application includes an interview, and a registration fee applies.</p>', 'notice-gold', 'alert')}
+    ${secHead('Documents you need')}
+    <div class="cards2">
+      <div class="box"><h3>Bachelor’s degree</h3>${ticks(['Passport', 'WASSCE certificate', 'Updated CV', 'Reference letter or referee details'])}</div>
+      <div class="box"><h3>Master’s degree</h3>${ticks(['Passport', 'Updated CV', 'WASSCE certificate', 'Undergraduate degree certificate and transcripts', 'Recommendation letters or referee details', 'Statement of purpose'])}</div>
+    </div>
+    <p class="muted gap-top">Registration fee: ${tbc()}</p>
+  </div></section>
+  <section class="sec sec-lilac"><div class="wrap split">
+    <div><span class="tag">Belarus</span><h2 style="margin-top:12px">Study and work in Belarus</h2><p class="lead">A study programme for people aged 18 to 30, with help finding work while you study.</p>
+      ${ticks(['1 year of accommodation paid', '1 year of visa costs paid', '1 year of health insurance paid', 'Help finding a job, with pay quoted at about $600 a month'])}
+      ${btnWA('Hello Carl-C, I am interested in the Belarus study and work programme.', 'Ask about this programme')}</div>
+    ${formHTML('study-abroad')}
+  </div></section>`
 });
 
 function docPage(k, o) {
@@ -1386,7 +1452,7 @@ page('about', {
       <div class="lic"><div><b>Certificate of Incorporation</b><span>Registrar of Companies, ${CO.reg.regAt}, ${CO.reg.incorporated}</span></div><span class="tag">${CO.reg.company}</span></div>
       <div class="lic"><div><b>VAT registration</b><span>Ghana Revenue Authority, from ${CO.reg.vatFrom}</span></div><span class="tag">TIN ${CO.reg.tin}</span></div>
       <div class="lic"><div><b>Business name registration</b><span>${CO.reg.bnName}, ${CO.reg.bnDate}</span></div><span class="tag">${CO.reg.bn}</span></div>
-      <div class="lic"><div><b>Private Employment Agency licence</b><span>Labour Department. Number and expiry date</span></div>${CO.pea ? `<span class="tag">${CO.pea.no}</span>` : tbc()}</div>
+      <div class="lic"><div><b>Private Employment Agency licence</b><span>Held by GUF Dream Consult Ltd, our recruitment partner. Number and expiry date</span></div>${CO.pea ? `<span class="tag">${CO.pea.no}</span>` : tbc()}</div>
       <div class="lic"><div><b>Ghana Tourism Authority licence</b><span>For our local tours</span></div>${CO.gta ? `<span class="tag">${CO.gta}</span>` : tbc()}</div>
       <div class="lic"><div><b>IATA or airline accreditation</b><span>For ticket issuing</span></div>${CO.iata ? `<span class="tag">${CO.iata}</span>` : tbc()}</div>
     </div>
@@ -1484,7 +1550,7 @@ page('fees', {
   </div></section>
   <section class="sec" id="refunds"><div class="wrap narrow">
     <h2>Refund policy</h2><p>${tbc('Draft for Carl-C to approve')}</p>
-    ${ticks(['If we have not started work, we refund our full service fee.', 'If we have started, we refund the part of our fee for work not yet done, and explain it in writing.', 'If we fail to deliver what we agreed, we refund our full service fee.', 'Government, embassy, airline and medical fees follow those bodies’ own rules. Most are not refundable, including when a visa is refused.', 'Refunds go back to the same payment method within 10 working days.'])}
+    ${ticks(['Job abroad registration: if we cannot place you within the agreed period, we refund at least half of the fees you paid, as the Labour Act requires.', 'If we have not started work, we refund our full service fee.', 'If we have started, we refund the part of our fee for work not yet done, and explain it in writing.', 'If we fail to deliver what we agreed, we refund our full service fee.', 'Government, embassy, airline and medical fees follow those bodies’ own rules. Most are not refundable, including when a visa is refused.', 'Refunds go back to the same payment method within 10 working days.'])}
     <p class="muted">To ask for a refund, send your reference number and receipt to ${CO.email} or WhatsApp ${CO.waDisplay}.</p></div></section>`
 });
 
@@ -1549,7 +1615,7 @@ function drawStaff(tab) {
       <td><label class="sr" for="st-${e.ref}">Stage</label><select class="stage-sel" id="st-${e.ref}" data-stage="${e.ref}">${st.map((s, i) => `<option value="${i}" ${i === e.stage ? 'selected' : ''}>${s}</option>`).join('')}</select></td></tr>`;
   }).join('')}</tbody></table></div><p class="muted" style="margin-top:12px">Change a stage and the client sees it on Track my application.</p>`;
   if (tab === 'bookings') body = S.bookings.length ? `<div class="tbl-wrap"><table><thead><tr><th>Ref</th><th>Name</th><th>Service</th><th>Appointment</th></tr></thead><tbody>${S.bookings.map(b => `<tr><td><b>${b.ref}</b></td><td>${esc(b.name)}<br><span class="muted">${esc(b.phone)}</span></td><td>${esc(b.service)}</td><td>${esc(b.when)}</td></tr>`).join('')}</tbody></table></div>` : `<div class="empty">No consultations booked yet. Book one from the <a href="#/contact?to=book">contact page</a> to see it here.</div>`;
-  if (tab === 'jobs') body = `<div class="split wide-left"><div class="tbl-wrap"><table><thead><tr><th>Job</th><th>Where</th><th>Closes</th></tr></thead><tbody>${allJobs().map(j => `<tr><td><b>${esc(j.title)}</b><br><span class="muted">${esc(j.sector)}, ${j.type === 'abroad' ? 'abroad' : 'Ghana'}</span> ${sampleTag(j.sample)}</td><td>${esc(j.city)}, ${esc(j.country)}</td><td>${fmtDate(j.deadline)}</td></tr>`).join('')}</tbody></table></div>
+  if (tab === 'jobs') body = `<div class="split wide-left"><div class="tbl-wrap"><table><thead><tr><th>Job</th><th>Where</th><th>Closes</th></tr></thead><tbody>${allJobs().map(j => `<tr><td><b>${esc(j.title)}</b><br><span class="muted">${esc(j.sector)}, ${j.type === 'abroad' ? 'abroad' : 'Ghana'}</span> ${sampleTag(j.sample)}</td><td>${esc(jobWhere(j))}</td><td>${j.deadline ? fmtDate(j.deadline) : 'Open now'}</td></tr>`).join('')}</tbody></table></div>
     <form class="form-card" data-addjob novalidate><h3>Post a job</h3><div class="fgrid">
       <div class="field full"><label for="aj-t">Job title</label><input id="aj-t" name="title" type="text" required></div>
       <fieldset class="field full"><legend>Type</legend><div class="radios"><label><input type="radio" name="type" value="abroad" checked>Abroad</label><label><input type="radio" name="type" value="local">Ghana</label></div></fieldset>
@@ -1699,7 +1765,7 @@ document.addEventListener('click', e => {
   const chip = t.closest('[data-filter] .chip');
   if (chip) { const grp = chip.parentElement, b = chip.closest('[data-board]'); $$('.chip', grp).forEach(c => c.setAttribute('aria-pressed', c === chip)); b.dataset[grp.dataset.filter] = chip.dataset.v; drawBoard(b); return; }
   const ap = t.closest('[data-apply]');
-  if (ap) { const j = allJobs().find(x => x.id === ap.dataset.apply), sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${j.title}, ${j.city}`; $('#apply').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => $('#apply input[name=name]').focus({ preventScroll: true }), 500); return; }
+  if (ap) { const j = allJobs().find(x => x.id === ap.dataset.apply), sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${jobLabel(j)}`; $('#apply').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => $('#apply input[name=name]').focus({ preventScroll: true }), 500); return; }
   const slot = t.closest('.slot');
   if (slot && !slot.disabled) { const fs = slot.closest('fieldset'); $$('.slot', fs).forEach(s => s.setAttribute('aria-pressed', s === slot)); $('input[name=btime]', fs).value = slot.dataset.slot; return; }
   const pk = t.closest('[data-pick]');
