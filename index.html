@@ -537,8 +537,16 @@ main:focus,.success:focus,[tabindex="-1"]:focus{outline:none}
 }
 
 .facts-list b,.ftr li,.kv dd{overflow-wrap:anywhere}
+
+.incl{list-style:none;padding:0;margin:2px 0 4px;display:grid;gap:5px;font-size:.93rem}
+.incl li{display:flex;gap:8px;align-items:flex-start;line-height:1.35}
+.incl svg{width:16px;height:16px;color:var(--ok);flex:none;margin-top:2px;stroke-width:2.6}
+.price small:first-child{margin-right:2px}
+.sec-head .btn-row{gap:18px}
+.tour .btn-row{flex-direction:column;gap:10px}
+.tour .btn{width:100%;flex:none}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233248198503"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233248198503","+233249393247"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -561,7 +569,7 @@ const CO = {
   name: 'CARL-C Limited Company',
   short: 'Carl-C',
   tagline: 'Catch our smile',
-  phones: ['0544 703 103', '0248 198 503'],
+  phones: ['0544 703 103', '0248 198 503', '024 939 3247'],
   waNumber: '233544703103',            // WhatsApp line (to confirm)
   waDisplay: '0544 703 103',
   email: 'carlctravelconsult@gmail.com', // from the shop poster; move to a company-domain email later
@@ -585,7 +593,7 @@ const CO = {
 
 const GROUPS = [
   { key: 'jobs', label: 'Jobs', items: ['jobs-abroad', 'local-jobs'] },
-  { key: 'travel', label: 'Travel', items: ['air-ticketing', 'travel-visas', 'local-tours'] },
+  { key: 'travel', label: 'Travel', items: ['air-ticketing', 'travel-visas', 'local-tours', 'international-tours'] },
   { key: 'documents', label: 'Documents', items: ['passport', 'birth-certificate'] },
   { key: 'business', label: 'Business', items: ['business-consultancy', 'recruitment-for-employers', 'talent-management'] }
 ];
@@ -596,6 +604,7 @@ const SERVICES = {
   'air-ticketing': { name: 'Air ticketing', icon: 'plane', group: 'travel', blurb: 'Flights out of Ghana to wherever you need to be, paid your way.', wa: 'Hello Carl-C, I want to book a flight.' },
   'travel-visas': { name: 'Travel services and visas', icon: 'globe', group: 'travel', blurb: 'Visa applications, document checks and interview preparation.', wa: 'Hello Carl-C, I need help with a visa application.' },
   'local-tours': { name: 'Local tours', icon: 'compass', group: 'travel', blurb: 'Guided trips to Ghana’s castles, forests, waterfalls and parks.', wa: 'Hello Carl-C, I want to book a tour.' },
+  'international-tours': { name: 'International tours', icon: 'suitcase', group: 'travel', blurb: 'Holiday packages abroad with flights, hotels and visa support.', wa: 'Hello Carl-C, I want to book a trip abroad.' },
   'passport': { name: 'Passport', icon: 'passport', group: 'documents', blurb: 'Help preparing and submitting your Ghana passport application.', wa: 'Hello Carl-C, I need help getting a passport.' },
   'birth-certificate': { name: 'Birth certificate', icon: 'certificate', group: 'documents', blurb: 'Help registering a birth or getting a certified copy.', wa: 'Hello Carl-C, I need help with a birth certificate.' },
   'business-consultancy': { name: 'Business consultancy', icon: 'chart', group: 'business', blurb: 'Registration, tax, licences and plans for new and growing businesses.', wa: 'Hello Carl-C, I would like to book a business consultation.' },
@@ -610,9 +619,10 @@ const STAGES = {
   birth: ['Request received', 'Documents checked', 'Submitted to the Registry', 'Certificate ready'],
   visa: ['Request received', 'Documents checked', 'Application submitted', 'Waiting for the embassy', 'Decision received'],
   flight: ['Request received', 'Flight options sent', 'Payment confirmed', 'Ticket issued'],
+  tour: ['Request received', 'Quote sent', 'Deposit paid', 'Visa and bookings in progress', 'Ready to travel'],
   general: ['Request received', 'We are reviewing it', 'In progress', 'Completed']
 };
-const STAGE_SET = { 'jobs-abroad': 'job', 'local-jobs': 'job', 'passport': 'passport', 'birth-certificate': 'birth', 'travel-visas': 'visa', 'air-ticketing': 'flight' };
+const STAGE_SET = { 'jobs-abroad': 'job', 'local-jobs': 'job', 'passport': 'passport', 'birth-certificate': 'birth', 'travel-visas': 'visa', 'air-ticketing': 'flight', 'local-tours': 'tour', 'international-tours': 'tour' };
 
 /* Job board — sample listings until staff post real ones */
 const JOBS = [
@@ -637,6 +647,16 @@ const TOURS = [
   { id: 't4', name: 'Kumasi heritage weekend', days: 2, price: 1500, dates: 'Sat 16 to Sun 17 Jan 2027', region: 'Ashanti Region', photo: 'Kente weaving at Bonwire', text: 'Manhyia Palace Museum, Kejetia market and a kente weaving visit at Bonwire.', sample: true },
   { id: 't5', name: 'Accra in a day', days: 1, price: 650, dates: 'Every Saturday', region: 'Greater Accra', photo: 'Jamestown lighthouse', text: 'Jamestown, Independence Square, the Kwame Nkrumah Memorial Park and the arts market.', sample: true },
   { id: 't6', name: 'Nzulezu and Busua coast', days: 2, price: 1800, dates: 'Sat 30 to Sun 31 Jan 2027', region: 'Western Region', photo: 'Nzulezu stilt village', text: 'Canoe to the stilt village of Nzulezu, then rest on Busua beach.', sample: true }
+];
+
+/* International tour packages — sample until Carl-C sends real packages and prices */
+const INTL_TOURS = [
+  { id: 'i1', name: 'Dubai city break', country: 'United Arab Emirates', days: 5, nights: 4, price: 24500, dates: 'Departs Sat 26 Dec 2026', photo: 'Dubai Marina at dusk', text: 'The Burj Khalifa, Dubai Mall, a desert safari with dinner and a dhow cruise on the creek.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'UAE visa support', 'Desert safari and city tour', 'Airport transfers'], sample: true },
+  { id: 'i2', name: 'Cape Town and the Winelands', country: 'South Africa', days: 6, nights: 5, price: 27900, dates: 'Departs Thu 14 Jan 2027', photo: 'Table Mountain from the Waterfront', text: 'Table Mountain, Cape Point, Robben Island and a day in the Stellenbosch winelands.', includes: ['Return flights from Accra', 'Hotel with breakfast', 'Visa support', 'Table Mountain cable car', 'Airport transfers'], sample: true },
+  { id: 'i3', name: 'Zanzibar beach escape', country: 'Tanzania', days: 5, nights: 4, price: 19800, dates: 'Departs Fri 12 Feb 2027', photo: 'Nungwi beach, Zanzibar', text: 'White sand at Nungwi, a Stone Town walking tour and a spice farm visit.', includes: ['Return flights from Accra', 'Beach resort with breakfast', 'Visa support', 'Stone Town tour', 'Airport transfers'], sample: true },
+  { id: 'i4', name: 'Istanbul highlights', country: 'Türkiye', days: 5, nights: 4, price: 23400, dates: 'Departs Sat 6 Mar 2027', photo: 'The Bosphorus at sunset', text: 'Hagia Sophia, the Blue Mosque, the Grand Bazaar and a Bosphorus cruise.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'Visa support', 'Guided old-city tour', 'Airport transfers'], sample: true },
+  { id: 'i5', name: 'Kenya safari: Nairobi and the Maasai Mara', country: 'Kenya', days: 5, nights: 4, price: 26700, dates: 'Departs Thu 8 Apr 2027', photo: 'Lions in the Maasai Mara', text: 'Game drives in the Maasai Mara and a morning at the Nairobi giraffe centre.', includes: ['Return flights from Accra', 'Safari lodge, full board', 'Travel authorisation support', 'Game drives with a guide', 'Airport transfers'], sample: true },
+  { id: 'i6', name: 'Paris and Amsterdam', country: 'France and the Netherlands', days: 8, nights: 7, price: 48000, dates: 'Departs Sat 1 May 2027', photo: 'Eiffel Tower from the Trocadéro', text: 'The Eiffel Tower, a Seine cruise and the Louvre, then canals and museums in Amsterdam.', includes: ['Return flights from Accra', 'Hotels with breakfast', 'Schengen visa support', 'Train from Paris to Amsterdam', 'Airport transfers'], sample: true }
 ];
 
 /* Testimonials — placeholders until real clients give permission */
@@ -666,6 +686,7 @@ const FEES = [
   { svc: 'Air ticket booking', ours: null, other: 'Airline fare and taxes' },
   { svc: 'Visa application support', ours: null, other: 'Embassy and visa centre fees' },
   { svc: 'Local tour', ours: 'Price per person shown on each package', other: 'Included in the package price' },
+  { svc: 'International tour', ours: 'Price per person shown on each package', other: 'Embassy visa fees, paid to the embassy' },
   { svc: 'Passport application', ours: null, other: 'Government fee from GH₵350 (standard 32-page booklet)' },
   { svc: 'Birth certificate', ours: null, other: 'Free registration within 12 months of birth; Registry fees apply after that' },
   { svc: 'Business consultancy', ours: null, other: 'Registrar and GRA fees, where they apply' },
@@ -682,6 +703,7 @@ const FAQ = [
   { q: 'Do I need to come to your office?', a: '<p>Most steps can happen on WhatsApp and through this website. You must attend some appointments in person, such as passport biometrics at a Passport Application Centre or fingerprints at a visa centre.</p>' },
   { q: 'How do I follow my application?', a: '<p>When you apply, you get a reference number like CC-100245. Enter it on <a href="#/track">Track my application</a> to see your current stage.</p>' },
   { q: 'What happens to the documents I upload?', a: '<p>Only Carl-C staff can see them, and we use them only for your application. Read our <a href="#/privacy">privacy policy</a> to see how we store them and how long we keep them.</p>' },
+  { q: 'Do you organise holidays abroad?', a: '<p>Yes. See our <a href="#/international-tours">international tours</a> for packages with flights, hotels and visa support, or ask us to plan a custom trip.</p>' },
   { q: 'Can I book a tour for a group?', a: '<p>Yes. Send us your group size and preferred dates on WhatsApp and we will tell you what we can arrange and the price per person.</p>' },
   { q: 'When are you open?', a: '<p>Monday to Friday, 8:30am to 5:00pm, and Saturday, 9:00am to 1:00pm. WhatsApp messages sent after hours are answered the next working day.</p>' }
 ];
@@ -743,6 +765,7 @@ const P = {
   upload: '<path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>',
   receipt: '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
   card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>',
+  suitcase: '<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7M9 11v5M15 11v5"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'
 };
 const WA = '<path fill="currentColor" stroke="none" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.9a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.5-6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/>';
@@ -864,6 +887,15 @@ function tourCard(t) {
     <p>${esc(t.dates)}</p>
     <div class="btn-row">${btnWA(`Hello Carl-C, I want to book the ${t.name} tour (${t.dates}).`, 'Book via WhatsApp', 'btn-sm')}</div></div></article>`;
 }
+function intlCard(t) {
+  return `<article class="tour"><div class="ph">${globe()}<div class="cap">${ic('camera')}Photo: ${esc(t.photo)}</div></div>
+    <div class="tour-body"><div class="facts"><span class="tag">${t.days} days, ${t.nights} nights</span><span class="tag">${esc(t.country)}</span>${sampleTag(t.sample)}</div>
+    <h3>${esc(t.name)}</h3><p>${esc(t.text)}</p>
+    <ul class="incl">${t.includes.map(i => `<li>${ic('check')}<span>${esc(i)}</span></li>`).join('')}</ul>
+    <div class="price"><small>From</small> ${money(t.price)} <small>per person</small></div>
+    <p>${esc(t.dates)}</p>
+    <div class="btn-row">${btnWA(`Hello Carl-C, I want to book the ${t.name} trip (${t.dates}).`, 'Book via WhatsApp', 'btn-sm')}<button type="button" class="btn btn-line btn-sm" data-pick="${t.id}">Ask about this trip</button></div></div></article>`;
+}
 function quoteCard(q) {
   return `<figure class="quote"><blockquote>${esc(q.text)}</blockquote><footer><div><b>${esc(q.who)}</b><span>${esc(q.what)}</span></div>${sampleTag(q.sample)}</footer></figure>`;
 }
@@ -939,6 +971,15 @@ const FORMS = {
     fields: [F.name, F.phone, F.email,
       { n: 'tour', l: 'Tour', t: 'select', req: 1, opts: () => [...TOURS.map(t => t.name), 'A custom trip'] },
       { n: 'people', l: 'Number of people', t: 'number', min: 1, val: 2 }, { n: 'when', l: 'Preferred date', t: 'date', minDays: 1 },
+      F.msg] },
+  'international-tours': { title: 'Plan a trip abroad', intro: 'Choose a package or tell us where you want to go. We send a full quote on WhatsApp or email.', submit: 'Send trip request', done: 'Trip request sent',
+    fields: [F.name, F.phone, F.email,
+      { n: 'trip', l: 'Trip', t: 'select', req: 1, opts: () => [...INTL_TOURS.map(t => t.name), 'A custom trip'] },
+      { n: 'where', l: 'Where to, if custom', t: 'text', ph: 'Country or city' },
+      { n: 'depart', l: 'Leaving on', t: 'date', minDays: 7 }, { n: 'return', l: 'Coming back on', t: 'date', minDays: 8 },
+      { n: 'adults', l: 'Adults', t: 'number', min: 1, val: 2 }, { n: 'children', l: 'Children (under 12)', t: 'number', min: 0, val: 0 },
+      { n: 'budget', l: 'Budget per person', t: 'select', opts: ['Under GH₵15,000', 'GH₵15,000 to GH₵25,000', 'GH₵25,000 to GH₵40,000', 'Over GH₵40,000'] },
+      { n: 'pass', l: 'Do you have a valid passport?', t: 'radios', req: 1, full: 1, opts: ['Yes', 'It expires within a year', 'Not yet'] },
       F.msg] },
   'passport': { title: 'Request passport help', intro: 'Upload what you have now. We tell you if anything is missing before you pay.', submit: 'Send request', done: 'Request sent',
     fields: [F.name, F.phone, F.email,
@@ -1134,8 +1175,8 @@ page('', {
     <div class="jobs two">${allJobs().filter(j => j.type === 'abroad').slice(0, 4).map(j => jobCard(j, true)).join('')}</div>
   </div></section>
   <section class="sec sec-lilac"><div class="wrap">
-    ${secHead('Tours around Ghana', 'Guided trips with transport, entry fees and a local guide.', '<a class="textlink" href="#/local-tours">See all tours ' + ic('chevR') + '</a>')}
-    <div class="tours">${TOURS.slice(0, 3).map(tourCard).join('')}</div>
+    ${secHead('Tours in Ghana and abroad', 'Guided trips at home, and holiday packages with flights and visa support.', '<span class="btn-row"><a class="textlink" href="#/local-tours">Tours in Ghana ' + ic('chevR') + '</a><a class="textlink" href="#/international-tours">Tours abroad ' + ic('chevR') + '</a></span>')}
+    <div class="tours">${TOURS.slice(0, 2).map(tourCard).join('')}${intlCard(INTL_TOURS[0])}</div>
   </div></section>
   <section class="sec"><div class="wrap">
     ${secHead('What clients say', '', '<a class="textlink" href="#/testimonials">Read more stories ' + ic('chevR') + '</a>')}
@@ -1242,9 +1283,25 @@ page('local-tours', {
   html: () => `${phero({ group: 'travel', title: 'Tours around Ghana', crumb: 'Local tours', lead: 'Castles, rainforest, waterfalls and savannah. Every package includes transport, entry fees and a local guide.', ctas: jump('tours', 'See the tours') + jump('apply', 'Plan a group trip', 'btn btn-ghost') })}
   <section class="sec" id="tours"><div class="wrap">
     ${CO.gta ? '' : notice(`<p>Ghana Tourism Authority licence: ${tbc()}</p>`)}
+    ${secHead('Packages', 'Prices are per person and include transport, entry fees and a guide.', `<a class="textlink" href="#/international-tours">Tours abroad ${ic('chevR')}</a>`)}
     <div class="tours">${TOURS.map(tourCard).join('')}</div></div></section>
   <section class="sec sec-lilac"><div class="wrap split wide-left">${formHTML('local-tours')}
     <div><h2>Good to know</h2><p>${tbc('Package terms to confirm')}</p>${ticks(['Prices are per person and include transport, entry fees and a guide', 'Hotel stays are included on tours of 2 days or more', 'Church, school and office groups get a quote for their size', 'Pay with Mobile Money, card or cash, with an official receipt'])}</div></div></section>`
+});
+
+page('international-tours', {
+  title: 'International tours', group: 'travel', crumb: 'International tours', wa: SERVICES['international-tours'].wa,
+  desc: 'Holiday packages from Ghana to Dubai, Cape Town, Zanzibar, Istanbul, Kenya and Europe, with flights, hotels and visa support.',
+  html: () => `${phero({ group: 'travel', title: 'Tours abroad', crumb: 'International tours', lead: 'Holiday packages with flights, hotels, visa support and airport transfers, planned and booked by one team in Accra.', ctas: jump('packages', 'See the packages') + jump('apply', 'Plan a custom trip', 'btn btn-ghost') })}
+  <section class="sec" id="packages"><div class="wrap">
+    ${CO.gta ? '' : notice(`<p>Ghana Tourism Authority licence: ${tbc()}</p>`)}
+    ${notice('<p><b>Embassies decide visas.</b> We prepare your visa application and tell you before you pay what happens to your deposit if a visa is refused.</p>', 'notice-gold', 'alert')}
+    ${secHead('Packages', 'Prices are per person sharing a room. Every package includes flights from Accra.', `<a class="textlink" href="#/local-tours">Tours in Ghana ${ic('chevR')}</a>`)}
+    <div class="tours">${INTL_TOURS.map(intlCard).join('')}</div></div></section>
+  <section class="sec sec-lilac on-light"><div class="wrap">${secHead('How booking works')}${stepsList([['Choose a trip', 'Pick a package or ask for a custom one.'], ['Passport and visa check', 'We check your passport and what the visa needs.'], ['Pay a deposit', 'With an official receipt. We explain the refund terms first.'], ['Visa and bookings', 'We apply for your visa, then confirm flights and hotels.'], ['Travel with support', 'Our WhatsApp line stays open for your whole trip.']])}</div></section>
+  <section class="sec"><div class="wrap split wide-left">${formHTML('international-tours')}
+    <div><h2>Good to know</h2><p>${tbc('Package terms to confirm')}</p>${ticks(['Your passport must be valid for at least 6 months after you return', 'Flights and hotels are confirmed once your deposit is paid', 'Embassy visa fees are paid to the embassy and are not refundable', 'Pay with Mobile Money, card, bank transfer or cash, with an official receipt'])}</div></div></section>`,
+  init(q) { if (q.trip) { const t = INTL_TOURS.find(x => x.id === q.trip), sel = $('#apply select[name=trip]'); if (t && sel) sel.value = t.name; } }
 });
 
 function docPage(k, o) {
@@ -1645,6 +1702,8 @@ document.addEventListener('click', e => {
   if (ap) { const j = allJobs().find(x => x.id === ap.dataset.apply), sel = $('#apply select[name=job]'); if (j && sel) sel.value = `${j.title}, ${j.city}`; $('#apply').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => $('#apply input[name=name]').focus({ preventScroll: true }), 500); return; }
   const slot = t.closest('.slot');
   if (slot && !slot.disabled) { const fs = slot.closest('fieldset'); $$('.slot', fs).forEach(s => s.setAttribute('aria-pressed', s === slot)); $('input[name=btime]', fs).value = slot.dataset.slot; return; }
+  const pk = t.closest('[data-pick]');
+  if (pk) { const tr = INTL_TOURS.find(x => x.id === pk.dataset.pick), sel = $('#apply select[name=trip]'); if (sel && tr) { sel.value = tr.name; $('#apply').scrollIntoView({ behavior: 'smooth', block: 'start' }); } else if (tr) go(`#/international-tours?trip=${tr.id}&to=apply`); return; }
   const vb = t.closest('[data-visa]'); if (vb) return drawVisa(vb.dataset.visa);
   const qa = t.closest('[data-qa]');
   if (qa) { const el = qa.closest('[data-quiz]'), ans = JSON.parse(el.dataset.ans || '[]'); ans.push(+qa.dataset.qa); return drawQuiz(el, +el.dataset.step + 1, ans); }
