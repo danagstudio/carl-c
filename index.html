@@ -254,7 +254,8 @@ ul{margin:0 0 1em;padding-left:1.2em}
 .ph .globe-bg{width:130%;right:-40%;bottom:-30%;opacity:.12}
 .ph figcaption,.ph .cap{position:absolute;left:14px;bottom:12px;right:14px;display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:#F4E4F2}
 .ph .cap svg{width:18px;height:18px;flex:none;opacity:.9}
-.ph img{width:100%;height:100%;object-fit:cover}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.credit{margin:18px 0 0;font-size:.82rem;color:var(--muted)}
 
 /* quotes */
 .quotes{display:grid;gap:18px}
@@ -662,24 +663,24 @@ const JOBS = [
   { id: 'l5', type: 'local', title: 'Site engineer', country: 'Ghana', city: 'Takoradi', sector: 'Construction', contract: '6-month contract', pay: 'Salary shared at interview', reqs: ['BSc civil engineering', '3 years on building sites', 'AutoCAD'], deadline: '2027-01-05', sample: true }
 ];
 
-/* Tour packages — sample until Carl-C sends real prices and photos */
+/* Tour packages — sample until Carl-C sends real prices and photos. Photos are free stock (Unsplash/Pexels licence) */
 const TOURS = [
-  { id: 't1', name: 'Cape Coast, Elmina and Kakum', days: 2, price: 1650, dates: 'Sat 12 to Sun 13 Dec 2026', region: 'Central Region', photo: 'Kakum canopy walkway', text: 'Walk the canopy bridges at Kakum, then tour Cape Coast and Elmina castles with a local guide.', sample: true },
-  { id: 't2', name: 'Volta: Wli Falls and Mount Afadja', days: 3, price: 2400, dates: 'Fri 18 to Sun 20 Dec 2026', region: 'Volta and Oti', photo: 'Wli waterfalls', text: 'Hike to Ghana’s tallest waterfall, climb Afadja and meet the monkeys of Tafi Atome.', sample: true },
-  { id: 't3', name: 'Mole National Park safari', days: 4, price: 3900, dates: 'Thu 7 to Sun 10 Jan 2027', region: 'Savannah Region', photo: 'Elephants at Mole', text: 'Walking and jeep safaris to see elephants and antelope, with a stop at Larabanga mosque.', sample: true },
-  { id: 't4', name: 'Kumasi heritage weekend', days: 2, price: 1500, dates: 'Sat 16 to Sun 17 Jan 2027', region: 'Ashanti Region', photo: 'Kente weaving at Bonwire', text: 'Manhyia Palace Museum, Kejetia market and a kente weaving visit at Bonwire.', sample: true },
-  { id: 't5', name: 'Accra in a day', days: 1, price: 650, dates: 'Every Saturday', region: 'Greater Accra', photo: 'Jamestown lighthouse', text: 'Jamestown, Independence Square, the Kwame Nkrumah Memorial Park and the arts market.', sample: true },
-  { id: 't6', name: 'Nzulezu and Busua coast', days: 2, price: 1800, dates: 'Sat 30 to Sun 31 Jan 2027', region: 'Western Region', photo: 'Nzulezu stilt village', text: 'Canoe to the stilt village of Nzulezu, then rest on Busua beach.', sample: true }
+  { id: 't1', name: 'Cape Coast, Elmina and Kakum', days: 2, price: 1650, dates: 'Sat 12 to Sun 13 Dec 2026', region: 'Central Region', img: 'img/tours/t1-kakum.jpg', alt: 'Visitors crossing the Kakum canopy walkway', credit: ['Peace Itimi', 'Unsplash'], text: 'Walk the canopy bridges at Kakum, then tour Cape Coast and Elmina castles with a local guide.', sample: true },
+  { id: 't2', name: 'Volta: Wli Falls and Mount Afadja', days: 3, price: 2400, dates: 'Fri 18 to Sun 20 Dec 2026', region: 'Volta and Oti', img: 'img/tours/t2-volta.jpg', alt: 'A forested mountain peak in the Volta Region', credit: ['Benjamin K Ashley-Lassen', 'Pexels'], text: 'Hike to Ghana’s tallest waterfall, climb Afadja and meet the monkeys of Tafi Atome.', sample: true },
+  { id: 't3', name: 'Mole National Park safari', days: 4, price: 3900, dates: 'Thu 7 to Sun 10 Jan 2027', region: 'Savannah Region', img: 'img/tours/t3-mole.jpg', alt: 'An elephant in thick green bush', credit: ['Julianna Corbett', 'Unsplash'], text: 'Walking and jeep safaris to see elephants and antelope, with a stop at Larabanga mosque.', sample: true },
+  { id: 't4', name: 'Kumasi heritage weekend', days: 2, price: 1500, dates: 'Sat 16 to Sun 17 Jan 2027', region: 'Ashanti Region', img: 'img/tours/t4-kente.jpg', alt: 'Close-up of a bright kente pattern', credit: ['Delight Dzansi', 'Unsplash'], text: 'Manhyia Palace Museum, Kejetia market and a kente weaving visit at Bonwire.', sample: true },
+  { id: 't5', name: 'Accra in a day', days: 1, price: 650, dates: 'Every Saturday', region: 'Greater Accra', img: 'img/tours/t5-jamestown.jpg', alt: 'The Jamestown lighthouse in Accra', credit: ['David Geneugelijk', 'Unsplash'], text: 'Jamestown, Independence Square, the Kwame Nkrumah Memorial Park and the arts market.', sample: true },
+  { id: 't6', name: 'Nzulezu and Busua coast', days: 2, price: 1800, dates: 'Sat 30 to Sun 31 Jan 2027', region: 'Western Region', img: 'img/tours/t6-nzulezu.jpg', alt: 'Canoes at the Amanzule wetlands, the way in to Nzulezu', credit: ['Kobe Subramaniam', 'Unsplash'], text: 'Canoe to the stilt village of Nzulezu, then rest on Busua beach.', sample: true }
 ];
 
 /* International tour packages — sample until Carl-C sends real packages and prices */
 const INTL_TOURS = [
-  { id: 'i1', name: 'Dubai city break', country: 'United Arab Emirates', days: 5, nights: 4, price: 24500, dates: 'Departs Sat 26 Dec 2026', photo: 'Dubai Marina at dusk', text: 'The Burj Khalifa, Dubai Mall, a desert safari with dinner and a dhow cruise on the creek.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'UAE visa support', 'Desert safari and city tour', 'Airport transfers'], sample: true },
-  { id: 'i2', name: 'Cape Town and the Winelands', country: 'South Africa', days: 6, nights: 5, price: 27900, dates: 'Departs Thu 14 Jan 2027', photo: 'Table Mountain from the Waterfront', text: 'Table Mountain, Cape Point, Robben Island and a day in the Stellenbosch winelands.', includes: ['Return flights from Accra', 'Hotel with breakfast', 'Visa support', 'Table Mountain cable car', 'Airport transfers'], sample: true },
-  { id: 'i3', name: 'Zanzibar beach escape', country: 'Tanzania', days: 5, nights: 4, price: 19800, dates: 'Departs Fri 12 Feb 2027', photo: 'Nungwi beach, Zanzibar', text: 'White sand at Nungwi, a Stone Town walking tour and a spice farm visit.', includes: ['Return flights from Accra', 'Beach resort with breakfast', 'Visa support', 'Stone Town tour', 'Airport transfers'], sample: true },
-  { id: 'i4', name: 'Istanbul highlights', country: 'Türkiye', days: 5, nights: 4, price: 23400, dates: 'Departs Sat 6 Mar 2027', photo: 'The Bosphorus at sunset', text: 'Hagia Sophia, the Blue Mosque, the Grand Bazaar and a Bosphorus cruise.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'Visa support', 'Guided old-city tour', 'Airport transfers'], sample: true },
-  { id: 'i5', name: 'Kenya safari: Nairobi and the Maasai Mara', country: 'Kenya', days: 5, nights: 4, price: 26700, dates: 'Departs Thu 8 Apr 2027', photo: 'Lions in the Maasai Mara', text: 'Game drives in the Maasai Mara and a morning at the Nairobi giraffe centre.', includes: ['Return flights from Accra', 'Safari lodge, full board', 'Travel authorisation support', 'Game drives with a guide', 'Airport transfers'], sample: true },
-  { id: 'i6', name: 'Paris and Amsterdam', country: 'France and the Netherlands', days: 8, nights: 7, price: 48000, dates: 'Departs Sat 1 May 2027', photo: 'Eiffel Tower from the Trocadéro', text: 'The Eiffel Tower, a Seine cruise and the Louvre, then canals and museums in Amsterdam.', includes: ['Return flights from Accra', 'Hotels with breakfast', 'Schengen visa support', 'Train from Paris to Amsterdam', 'Airport transfers'], sample: true }
+  { id: 'i1', name: 'Dubai city break', country: 'United Arab Emirates', days: 5, nights: 4, price: 24500, dates: 'Departs Sat 26 Dec 2026', img: 'img/tours/i1-dubai.jpg', alt: 'Dubai Marina towers and a yacht at sunset', credit: ['Dawid Tkocz', 'Unsplash'], text: 'The Burj Khalifa, Dubai Mall, a desert safari with dinner and a dhow cruise on the creek.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'UAE visa support', 'Desert safari and city tour', 'Airport transfers'], sample: true },
+  { id: 'i2', name: 'Cape Town and the Winelands', country: 'South Africa', days: 6, nights: 5, price: 27900, dates: 'Departs Thu 14 Jan 2027', img: 'img/tours/i2-cape-town.jpg', alt: 'Table Mountain seen from the V&A Waterfront', credit: ['Marlin Clark', 'Unsplash'], text: 'Table Mountain, Cape Point, Robben Island and a day in the Stellenbosch winelands.', includes: ['Return flights from Accra', 'Hotel with breakfast', 'Visa support', 'Table Mountain cable car', 'Airport transfers'], sample: true },
+  { id: 'i3', name: 'Zanzibar beach escape', country: 'Tanzania', days: 5, nights: 4, price: 19800, dates: 'Departs Fri 12 Feb 2027', img: 'img/tours/i3-zanzibar.jpg', alt: 'Palm trees on a white-sand beach in Zanzibar', credit: ['Danai Tsoutreli', 'Unsplash'], text: 'White sand at Nungwi, a Stone Town walking tour and a spice farm visit.', includes: ['Return flights from Accra', 'Beach resort with breakfast', 'Visa support', 'Stone Town tour', 'Airport transfers'], sample: true },
+  { id: 'i4', name: 'Istanbul highlights', country: 'Türkiye', days: 5, nights: 4, price: 23400, dates: 'Departs Sat 6 Mar 2027', img: 'img/tours/i4-istanbul.jpg', alt: 'A ferry on the Bosphorus below the Süleymaniye Mosque', credit: ['Hussein A. Kamal', 'Unsplash'], text: 'Hagia Sophia, the Blue Mosque, the Grand Bazaar and a Bosphorus cruise.', includes: ['Return flights from Accra', '4-star hotel with breakfast', 'Visa support', 'Guided old-city tour', 'Airport transfers'], sample: true },
+  { id: 'i5', name: 'Kenya safari: Nairobi and the Maasai Mara', country: 'Kenya', days: 5, nights: 4, price: 26700, dates: 'Departs Thu 8 Apr 2027', img: 'img/tours/i5-maasai-mara.jpg', alt: 'A young lion resting in the grass', credit: ['David Heiling', 'Unsplash'], text: 'Game drives in the Maasai Mara and a morning at the Nairobi giraffe centre.', includes: ['Return flights from Accra', 'Safari lodge, full board', 'Travel authorisation support', 'Game drives with a guide', 'Airport transfers'], sample: true },
+  { id: 'i6', name: 'Paris and Amsterdam', country: 'France and the Netherlands', days: 8, nights: 7, price: 48000, dates: 'Departs Sat 1 May 2027', img: 'img/tours/i6-paris.jpg', alt: 'The Eiffel Tower seen from the Trocadéro', credit: ['hoch3fotografie', 'Unsplash'], text: 'The Eiffel Tower, a Seine cruise and the Louvre, then canals and museums in Amsterdam.', includes: ['Return flights from Accra', 'Hotels with breakfast', 'Schengen visa support', 'Train from Paris to Amsterdam', 'Airport transfers'], sample: true }
 ];
 
 /* Testimonials — placeholders until real clients give permission */
@@ -909,8 +910,17 @@ function drawBoard(el) {
   $('[data-count]', el).textContent = `${list.length} opening${list.length === 1 ? '' : 's'}`;
 }
 
+const tourPhoto = t => t.img
+  ? `<div class="ph"><img src="${t.img}" alt="${esc(t.alt)}" width="800" height="600" loading="lazy" decoding="async"></div>`
+  : `<div class="ph">${globe()}<div class="cap">${ic('camera')}Photo: ${esc(t.photo || t.name)}</div></div>`;
+function photoCredits(list) {
+  const by = {};
+  list.filter(t => t.credit).forEach(t => { const [who, site] = t.credit; (by[site] = by[site] || []).includes(who) || by[site].push(who); });
+  const parts = Object.entries(by).map(([site, names]) => `${names.join(', ')} on ${site}`);
+  return parts.length ? `<p class="credit">Photos: ${esc(parts.join('; '))}.</p>` : '';
+}
 function tourCard(t) {
-  return `<article class="tour"><div class="ph">${globe()}<div class="cap">${ic('camera')}Photo: ${esc(t.photo)}</div></div>
+  return `<article class="tour">${tourPhoto(t)}
     <div class="tour-body"><div class="facts"><span class="tag">${t.days} day${t.days > 1 ? 's' : ''}</span><span class="tag">${esc(t.region)}</span>${sampleTag(t.sample)}</div>
     <h3>${esc(t.name)}</h3><p>${esc(t.text)}</p>
     <div class="price">${money(t.price)} <small>per person</small></div>
@@ -918,7 +928,7 @@ function tourCard(t) {
     <div class="btn-row">${btnWA(`Hello Carl-C, I want to book the ${t.name} tour (${t.dates}).`, 'Book via WhatsApp', 'btn-sm')}</div></div></article>`;
 }
 function intlCard(t) {
-  return `<article class="tour"><div class="ph">${globe()}<div class="cap">${ic('camera')}Photo: ${esc(t.photo)}</div></div>
+  return `<article class="tour">${tourPhoto(t)}
     <div class="tour-body"><div class="facts"><span class="tag">${t.days} days, ${t.nights} nights</span><span class="tag">${esc(t.country)}</span>${sampleTag(t.sample)}</div>
     <h3>${esc(t.name)}</h3><p>${esc(t.text)}</p>
     <ul class="incl">${t.includes.map(i => `<li>${ic('check')}<span>${esc(i)}</span></li>`).join('')}</ul>
@@ -1214,7 +1224,7 @@ page('', {
   </div></section>
   <section class="sec sec-lilac"><div class="wrap">
     ${secHead('Tours in Ghana and abroad', 'Guided trips at home, and holiday packages with flights and visa support.', '<span class="btn-row"><a class="textlink" href="#/local-tours">Tours in Ghana ' + ic('chevR') + '</a><a class="textlink" href="#/international-tours">Tours abroad ' + ic('chevR') + '</a></span>')}
-    <div class="tours">${TOURS.slice(0, 2).map(tourCard).join('')}${intlCard(INTL_TOURS[0])}</div>
+    <div class="tours">${TOURS.slice(0, 2).map(tourCard).join('')}${intlCard(INTL_TOURS[0])}</div>${photoCredits([...TOURS.slice(0, 2), INTL_TOURS[0]])}
   </div></section>
   <section class="sec"><div class="wrap">
     ${secHead('What clients say', '', '<a class="textlink" href="#/testimonials">Read more stories ' + ic('chevR') + '</a>')}
@@ -1329,7 +1339,7 @@ page('local-tours', {
   <section class="sec" id="tours"><div class="wrap">
     ${CO.gta ? '' : notice(`<p>Ghana Tourism Authority licence: ${tbc()}</p>`)}
     ${secHead('Packages', 'Prices are per person and include transport, entry fees and a guide.', `<a class="textlink" href="#/international-tours">Tours abroad ${ic('chevR')}</a>`)}
-    <div class="tours">${TOURS.map(tourCard).join('')}</div></div></section>
+    <div class="tours">${TOURS.map(tourCard).join('')}</div>${photoCredits(TOURS)}</div></section>
   <section class="sec sec-lilac"><div class="wrap split wide-left">${formHTML('local-tours')}
     <div><h2>Good to know</h2><p>${tbc('Package terms to confirm')}</p>${ticks(['Prices are per person and include transport, entry fees and a guide', 'Hotel stays are included on tours of 2 days or more', 'Church, school and office groups get a quote for their size', 'Pay with Mobile Money, card or cash, with an official receipt'])}</div></div></section>`
 });
@@ -1342,7 +1352,7 @@ page('international-tours', {
     ${CO.gta ? '' : notice(`<p>Ghana Tourism Authority licence: ${tbc()}</p>`)}
     ${notice('<p><b>Embassies decide visas.</b> We prepare your visa application and tell you before you pay what happens to your deposit if a visa is refused.</p>', 'notice-gold', 'alert')}
     ${secHead('Packages', 'Prices are per person sharing a room. Every package includes flights from Accra.', `<a class="textlink" href="#/local-tours">Tours in Ghana ${ic('chevR')}</a>`)}
-    <div class="tours">${INTL_TOURS.map(intlCard).join('')}</div></div></section>
+    <div class="tours">${INTL_TOURS.map(intlCard).join('')}</div>${photoCredits(INTL_TOURS)}</div></section>
   <section class="sec sec-lilac on-light"><div class="wrap">${secHead('How booking works')}${stepsList([['Choose a trip', 'Pick a package or ask for a custom one.'], ['Passport and visa check', 'We check your passport and what the visa needs.'], ['Pay a deposit', 'With an official receipt. We explain the refund terms first.'], ['Visa and bookings', 'We apply for your visa, then confirm flights and hotels.'], ['Travel with support', 'Our WhatsApp line stays open for your whole trip.']])}</div></section>
   <section class="sec"><div class="wrap split wide-left">${formHTML('international-tours')}
     <div><h2>Good to know</h2><p>${tbc('Package terms to confirm')}</p>${ticks(['Your passport must be valid for at least 6 months after you return', 'Flights and hotels are confirmed once your deposit is paid', 'Embassy visa fees are paid to the embassy and are not refundable', 'Pay with Mobile Money, card, bank transfer or cash, with an official receipt'])}</div></div></section>`,
