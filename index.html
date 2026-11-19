@@ -590,8 +590,48 @@ main:focus,.success:focus,[tabindex="-1"]:focus{outline:none}
 .tag-ok svg{width:13px;height:13px;stroke-width:2.6}
 .notice-ok{background:#E9F6EF;border-left-color:var(--ok)}
 .notice-ok svg{color:var(--ok)}
+
+/* About page: profile content */
+.about-photo{margin:0}
+.about-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-lg)}
+.about-photo figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
+.mv{display:grid;gap:20px}
+@media (min-width:860px){.mv{grid-template-columns:1fr 1fr}}
+.mv .box{height:100%}
+.mv h2{font-size:1.6rem}
+.values{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:640px){.values{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.values{grid-template-columns:repeat(3,1fr)}}
+.value{display:flex;gap:16px;align-items:center;border:1.5px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--white)}
+.value .vl{flex:none;width:52px;height:52px;border-radius:12px;background:var(--plum);color:var(--gold);display:grid;place-items:center;font-family:var(--f-head);font-weight:800;font-size:1.6rem}
+.value p{margin:0;font-weight:600;line-height:1.35}
+.founder{display:grid;gap:28px;align-items:center;position:relative}
+@media (min-width:860px){.founder{grid-template-columns:300px 1fr;gap:44px}}
+.founder img{width:100%;max-width:300px;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg);border:4px solid var(--gold)}
+.founder .sig{margin:0}
+.founder .sig b{display:block;font-family:var(--f-head);font-size:1.1rem}
+.founder .sig span{color:var(--gold)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:860px){.ach ul{columns:2;column-gap:40px}.ach li{break-inside:avoid}}
+.about-split{align-items:center}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r)}
+/* offices */
+.offices{display:grid;gap:18px}
+@media (min-width:760px){.offices{grid-template-columns:repeat(3,1fr)}}
+.office{border:1.5px solid var(--line);border-radius:var(--r-lg);padding:20px;background:var(--white)}
+.office h3{margin-bottom:4px}
+.office ul{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px}
+.office li{display:flex;gap:8px;align-items:center}
+.office svg{width:16px;height:16px;color:var(--plum)}
+/* also ask us about */
+.more-svc{margin-top:28px}
+.more-svc h3{margin-bottom:10px}
+.more-list{display:flex;flex-wrap:wrap;gap:8px}
+.more-list .chip{text-decoration:none}
+.founder img,.gallery img,.about-photo img{height:auto}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233248198503","+233249393247"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233249393247","+233248198503","+233277185793"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -614,8 +654,8 @@ const CO = {
   name: 'CARL-C Limited Company',
   short: 'Carl-C',
   tagline: 'Catch our smile',
-  phones: ['0544 703 103', '0248 198 503', '024 939 3247'],
-  waNumber: '233544703103',            // WhatsApp line (to confirm)
+  phones: ['0544 703 103', '024 939 3247', '024 819 8503', '027 718 5793'],
+  waNumber: '233544703103',            // WhatsApp line (to confirm: the company profile QR code opens 024 939 3247)
   waDisplay: '0544 703 103',
   email: 'carlctravelconsult@gmail.com', // from the shop poster; move to a company-domain email later
   emailTbc: false,
@@ -807,6 +847,54 @@ const SEED_ENQUIRIES = [
   { ref: 'CC-100245', service: 'passport', name: 'Sample client A', phone: '0240000001', email: '', created: '2026-11-04T10:12:00', stage: 2, files: ['ghana-card.jpg', 'birth-certificate.pdf'], fields: { 'Application type': 'Renewal' }, sample: true },
   { ref: 'CC-100318', service: 'jobs-abroad', name: 'Sample client B', phone: '0550000002', email: '', created: '2026-11-09T14:40:00', stage: 1, files: ['cv.pdf'], fields: { 'Job': 'Hotel room attendant, Dubai' }, sample: true },
   { ref: 'CC-100402', service: 'air-ticketing', name: 'Sample client C', phone: '0200000003', email: '', created: '2026-11-15T09:05:00', stage: 1, files: [], fields: { 'Route': 'Accra to London, return' }, sample: true }
+];
+
+
+/* From the Carl-C company profile (2025) */
+const CEO = { name: 'Mr. Carlos Berry', title: 'Founder and CEO', photo: 'img/team/carlos-berry.jpg',
+  message: [
+    'At Carl-C Limited Company, we believe talent knows no boundaries. Whether you are a highly skilled professional or someone eager to gain experience, we are here to help you find the right opportunity to show your abilities and reach your full potential.',
+    'Our mission is simple: to connect skilled and unskilled workers with employers who value their talents. With a network across many industries and countries, we create meaningful connections that drive personal and professional growth.',
+    'Wherever you are in your career, Carl-C is here to support you every step of the way. Welcome to a community where your skills are celebrated, your ambitions are nurtured and your success knows no bounds.'
+  ] };
+const ABOUT_TEXT = 'Carl-C Limited Company is a staffing and travel company that connects skilled and unskilled workers with employers across many industries and countries. We are committed to excellence and to meaningful connections between employers and workers, so that people from every background can find work that matches their skills and ambitions.';
+const MISSION = 'To create unforgettable travel experiences that connect people with the beauty, culture and adventure the world has to offer. We provide personal, responsible travel solutions, from local escapes to international adventures, so every journey is seamless, enriching and memorable.';
+const VISION = [
+  'A world where every person can bring their skills and talents to the workforce, whatever their level of experience or formal education, in a diverse and inclusive workforce where everyone can succeed.',
+  'To be the best recruitment company in Ghana, always putting our clients and candidates first, and partnering with clients in Ghana, Europe, America and the UAE to fill each role with exactly the right person.'
+];
+const VALUES = [
+  ['S', 'Superior service delivery'],
+  ['P', 'Passionate about excellent customer satisfaction'],
+  ['R', 'Respect for our customers and every member of our staff'],
+  ['I', 'Integrity in every service we provide'],
+  ['T', 'Teamwork to deliver excellent service'],
+  ['E', 'Excellence in all we do']
+];
+const ACHIEVEMENTS = [
+  'Hundreds of visas and passports processed for clients travelling across different continents',
+  'More than 50 local and international tours organised for groups and individuals',
+  'Partnerships with airlines, hotels and institutions for affordable travel and accommodation',
+  'Students helped to secure study places in Europe, Asia and North America',
+  'Local and overseas job recruitment, connecting skilled people with opportunities abroad',
+  'Repeat clients and partners who trust our customer-focused service'
+];
+const DEPARTURES = ['img/about/departures-1.jpg', 'img/about/departures-2.jpg', 'img/about/departures-3.jpg', 'img/about/departures-4.jpg'].map(img => ({ img, alt: 'Carl-C clients at the airport, ready to travel' }));
+
+/* Offices — from the company profile */
+const BRANCHES = [
+  { name: 'Accra head office', area: 'Amasaman', address: 'Amasaman Stadium Road, Agatha Junction, Accra', phones: ['0544 703 103', '024 939 3247', '024 819 8503', '027 718 5793'] },
+  { name: 'Agona Swedru branch', area: 'Agona Swedru, Central Region', phones: ['059 583 7516', '059 702 1308'] },
+  { name: 'Techiman branch', area: 'Tuobodom, Techiman', phones: ['054 165 0992', '057 011 1056'] }
+];
+
+/* Other services from the company profile — enquiries by WhatsApp until each gets its own page */
+const MORE_SERVICES = [
+  { name: 'Hotel reservations', wa: 'Hello Carl-C, I want to book a hotel.' },
+  { name: 'Car rental', wa: 'Hello Carl-C, I want to rent a car.' },
+  { name: 'Event planning and management', wa: 'Hello Carl-C, I want help planning an event.' },
+  { name: 'Car importation', wa: 'Hello Carl-C, I want to import a car.' },
+  { name: 'Real estate and land', wa: 'Hello Carl-C, I am interested in land or property.' }
 ];
 </script>
 <script>(function () {
@@ -1263,6 +1351,7 @@ page('', {
     <section class="sec after-stub" aria-labelledby="h-svc"><div class="wrap">
       ${secHead('<span id="h-svc">Everything we can help with</span>', 'Choose a service to see what it involves, what you need and what it costs.')}
       ${servicesList()}
+      <div class="more-svc"><h3>Also ask us about</h3><div class="more-list">${MORE_SERVICES.map(m => `<a class="chip" href="${wa(m.wa)}" target="_blank" rel="noopener">${esc(m.name)}</a>`).join('')}</div></div>
     </div></section></div>
   <section class="sec sec-plum">${globe()}<div class="wrap">
     ${secHead('How it works', 'The same clear steps for every service, from a passport renewal to a job abroad.')}
@@ -1499,15 +1588,32 @@ page('recruitment-for-employers', {
 
 page('about', {
   title: 'About us', wa: 'Hello Carl-C, I would like to know more about your company.',
-  desc: 'About CARL-C Limited Company: our story, our registrations and licences, and the team behind “Catch our smile”.',
+  desc: 'About CARL-C Limited Company: who we are, our mission, vision and SPRITE values, a message from our founder, our registrations and our team.',
   html: () => `${phero({ title: 'About Carl-C', crumb: 'About us', lead: 'A registered Ghanaian company helping people find work, travel, and get their official documents, with clear fees and no false promises.' })}
-  <section class="sec"><div class="wrap split">
-    <div><h2>Our story</h2>
-      <p>Carl-C began in March 2023 as Carl-C Travel Consult, a registered business name. In March 2024 we incorporated as CARL-C Limited Company under the Companies Act, 2019 (Act 992), and in September 2025 we registered for VAT with the Ghana Revenue Authority.</p>
-      <p>Today we help people with jobs abroad and at home, flights, visas, local tours, passports and birth certificates, and we help businesses register, plan and hire.</p>
-      <p>${tbc('Founder’s story and mission from Carl-C')}</p>
+  <section class="sec"><div class="wrap split about-split">
+    <div><h2>Who we are</h2>
+      <p>${ABOUT_TEXT}</p>
+      <h3>Our story</h3>
+      <p>Carl-C began in March 2023 as Carl-C Travel Consult, a registered business name. In March 2024 we incorporated as CARL-C Limited Company under the Companies Act, 2019 (Act 992), and in September 2025 we registered for VAT with the Ghana Revenue Authority. Today we serve clients from offices in Accra, Agona Swedru and Techiman.</p>
       <h3>Our promise</h3>${ticks(['We show every fee before you pay', 'You get an official receipt for every payment', 'We never promise what only an embassy or employer can decide', 'We keep your documents private'])}</div>
-    ${photo('Our office and front desk', 'ph-tall')}
+    <figure class="about-photo"><img src="img/about/office.jpg" alt="The Carl-C office in Accra, with staff at the front desk" width="1000" height="750" loading="lazy" decoding="async"><figcaption>Our office at Amasaman, Accra</figcaption></figure>
+  </div></section>
+  <section class="sec sec-lilac"><div class="wrap">
+    <div class="mv">
+      <div class="box"><h2>Our mission</h2><p class="mb0">${MISSION}</p></div>
+      <div class="box"><h2>Our vision</h2>${VISION.map(v => `<p>${v}</p>`).join('')}</div>
+    </div></div></section>
+  <section class="sec"><div class="wrap">${secHead('Our values', 'Six values, one word: SPRITE.')}
+    <div class="values">${VALUES.map(([l, t]) => `<div class="value"><span class="vl" aria-hidden="true">${l}</span><p>${t}</p></div>`).join('')}</div>
+  </div></section>
+  <section class="sec sec-plum">${globe()}<div class="wrap founder">
+    <img src="${CEO.photo}" alt="${esc(CEO.name)}, ${CEO.title} of Carl-C" width="600" height="600" loading="lazy" decoding="async">
+    <div><h2>A message from our founder</h2>${CEO.message.map(m => `<p>${m}</p>`).join('')}<p class="sig"><b>${esc(CEO.name)}</b><span>${CEO.title}</span></p></div>
+  </div></section>
+  <section class="sec"><div class="wrap">${secHead('What we have achieved')}
+    <div class="ach">${ticks(ACHIEVEMENTS)}</div>
+    <div class="gallery gap-top">${DEPARTURES.map(d => `<img src="${d.img}" alt="${d.alt}" width="450" height="600" loading="lazy" decoding="async">`).join('')}</div>
+    <p class="muted mb0" style="margin-top:10px">Clients setting off from Kotoka International Airport.</p>
   </div></section>
   <section class="sec sec-lilac" id="registrations"><div class="wrap">${secHead('Registrations and licences', 'Check us before you trust us. These are our official numbers.')}
     <div class="lic-list">
@@ -1516,6 +1622,7 @@ page('about', {
       <div class="lic"><div><b>Business name registration</b><span>${CO.reg.bnName}, ${CO.reg.bnDate}</span></div><span class="tag">${CO.reg.bn}</span></div>
       <div class="lic"><div><b>Private Employment Agency licence</b><span>Held by GUF Dream Consult Ltd, our recruitment partner. Number and expiry date</span></div>${CO.pea ? `<span class="tag">${CO.pea.no}</span>` : tbc()}</div>
       <div class="lic"><div><b>Ghana Tourism Authority licence</b><span>For our local tours</span></div>${CO.gta ? `<span class="tag">${CO.gta}</span>` : tbc()}</div>
+      <div class="lic"><div><b>Real Estate Agency Council licence</b><span>For land and property sales</span></div>${CO.reac ? `<span class="tag">${CO.reac}</span>` : tbc()}</div>
       <div class="lic"><div><b>IATA or airline accreditation</b><span>For ticket issuing</span></div>${CO.iata ? `<span class="tag">${CO.iata}</span>` : tbc()}</div>
     </div>
     <div class="certs gap-top">
@@ -1563,6 +1670,9 @@ page('contact', {
   <section class="sec"><div class="wrap split">
     <div>${contactFacts()}${mapBlock()}</div>
     ${formHTML('contact', 'message')}
+  </div></section>
+  <section class="sec" id="offices"><div class="wrap">${secHead('Our offices', 'Visit or call the office nearest to you.')}
+    <div class="offices">${BRANCHES.map(b => `<div class="office"><h3>${esc(b.name)}</h3><p class="muted">${esc(b.address || b.area)}</p><ul>${b.phones.map(ph => `<li>${ic('phone')}<a href="${telHref(ph)}">${ph}</a></li>`).join('')}</ul></div>`).join('')}</div>
   </div></section>
   <section class="sec sec-lilac" id="book"><div class="wrap split wide-left">${formHTML('book', 'book-form')}
     <div><h2>Before you come</h2>${ticks(['Bring your Ghana Card', 'Bring the documents for your service, or photos of them', 'Ask for an official receipt for any payment'])}<a class="textlink" href="#/anti-fraud">Our anti-fraud notice ${ic('chevR')}</a></div></div></section>`,
@@ -1747,7 +1857,7 @@ function chrome() {
     <div><div class="co">CARL-C Limited Company</div><div class="tagl">${CO.tagline}</div><p class="regs">Company reg. ${CO.reg.company}<br>TIN ${CO.reg.tin}<br>Business name ${CO.reg.bn}<br>PEA licence ${CO.pea ? CO.pea.no : tbc()}</p></div>
     <div><h3>Services</h3><ul>${Object.entries(SERVICES).map(([k, s]) => `<li><a href="${svcLink(k)}">${s.name}</a></li>`).join('')}</ul></div>
     <div><h3>Help</h3><ul><li><a href="#/track">Track my application</a></li><li><a href="#/faq">FAQ</a></li><li><a href="#/fees">Fees and refunds</a></li><li><a href="#/anti-fraud">Anti-fraud notice</a></li><li><a href="#/news">News and guides</a></li><li><a href="#/testimonials">Client stories</a></li><li><a href="#/privacy">Privacy policy</a></li><li><a href="#/terms">Terms</a></li><li><a href="#/staff">Verify a staff member</a></li><li><a href="#/staff-portal">Staff portal</a></li></ul></div>
-    <div><h3>Contact</h3><ul>${CO.phones.map(p => `<li><a href="${telHref(p)}">${p}</a></li>`).join('')}<li><a href="${wa('Hello Carl-C')}" target="_blank" rel="noopener">WhatsApp ${CO.waDisplay}</a></li><li><a href="mailto:${CO.email}">${CO.email}</a></li><li>${CO.address ? esc(CO.address) : 'Office address ' + tbc()}<br>${esc(CO.pobox || '')}<br>GPS ${esc(CO.gps || '')}</li><li>Mon to Fri 8:30am to 5:00pm<br>Sat 9:00am to 1:00pm</li></ul></div>
+    <div><h3>Contact</h3><ul>${CO.phones.map(p => `<li><a href="${telHref(p)}">${p}</a></li>`).join('')}<li><a href="${wa('Hello Carl-C')}" target="_blank" rel="noopener">WhatsApp ${CO.waDisplay}</a></li><li><a href="mailto:${CO.email}">${CO.email}</a></li><li>${CO.address ? esc(CO.address) : 'Office address ' + tbc()}<br>${esc(CO.pobox || '')}<br>GPS ${esc(CO.gps || '')}</li><li>Mon to Fri 8:30am to 5:00pm<br>Sat 9:00am to 1:00pm</li><li>Branches: <a href="#/contact?to=offices">Agona Swedru and Techiman</a></li></ul></div>
     </div><div class="ftr-bottom"><span>© 2026 CARL-C Limited Company. All rights reserved.</span><span>Website by DANAG STUDIO</span></div></div>`;
   const S = store.get();
   if (S.ribbonClosed) $('#ribbon').remove();
