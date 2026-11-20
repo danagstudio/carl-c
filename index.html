@@ -630,6 +630,16 @@ main:focus,.success:focus,[tabindex="-1"]:focus{outline:none}
 .more-list{display:flex;flex-wrap:wrap;gap:8px}
 .more-list .chip{text-decoration:none}
 .founder img,.gallery img,.about-photo img{height:auto}
+
+/* recent departures: clip + photos */
+.dep{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:760px){.dep{grid-template-columns:3fr 4fr;align-items:stretch}}
+.dep-video{margin:0;display:flex;flex-direction:column}
+.dep-video video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r);background:var(--spine);display:block}
+@media (min-width:760px){.dep-video video{flex:1;min-height:0;height:100%;aspect-ratio:auto}}
+.dep-video figcaption{font-size:.9rem;margin-top:8px;opacity:.85}
+.dep-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}
+.dep-photos img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r)}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"CARL-C Limited Company","slogan":"Catch our smile","telephone":["+233544703103","+233248198503","+233277185793"],"taxID":"C0063865092","email":"carlctravelconsult@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Amasaman Stadium Road, Agatha Junction","postOfficeBoxNumber":"OF 700","addressLocality":"Accra","addressCountry":"GH"},"areaServed":"GH","knowsAbout":["Jobs abroad","Recruitment","Air ticketing","Visa applications","Local tours","Passport applications","Birth certificates","Business consultancy","Talent management"]}</script>
 </head>
@@ -896,6 +906,13 @@ const MORE_SERVICES = [
   { name: 'Car importation', wa: 'Hello Carl-C, I want to import a car.' },
   { name: 'Real estate and land', wa: 'Hello Carl-C, I am interested in land or property.' }
 ];
+
+/* Recent departures — photos and a short clip sent by Carl-C (Nov 2026). Publish only with the clients' permission. */
+const RECENT_DEPARTURES = {
+  when: 'November 2026',
+  video: { src: 'img/video/departure-nov26.mp4', poster: 'img/video/departure-nov26.jpg', caption: 'A client speaks before his flight' },
+  photos: ['img/departures/nov26-1.jpg', 'img/departures/nov26-2.jpg', 'img/departures/nov26-3.jpg', 'img/departures/nov26-4.jpg']
+};
 </script>
 <script>(function () {
 'use strict';
@@ -1073,6 +1090,13 @@ function intlCard(t) {
     <ul class="incl">${t.options.map(o => `<li>${ic('clock')}<span>${esc(o)}</span></li>`).join('')}</ul>${t.note ? `<p class="note">${esc(t.note)}</p>` : ''}
     <p class="ask">Price on request</p>
     <div class="btn-row">${btnWA(`Hello Carl-C, please send me the price for the ${t.name} package.`, 'Ask for price', 'btn-sm')}<button type="button" class="btn btn-line btn-sm" data-pick="${t.id}">Plan this trip</button></div></div></article>`;
+}
+function departuresBlock() {
+  const D = RECENT_DEPARTURES;
+  return `<div class="dep">
+    <figure class="dep-video"><video controls preload="none" playsinline poster="${D.video.poster}" width="360" height="646"><source src="${D.video.src}" type="video/mp4"></video><figcaption>${esc(D.video.caption)}, ${D.when}. Tap to play.</figcaption></figure>
+    <div class="dep-photos">${D.photos.map(src => `<img src="${src}" alt="Carl-C clients at Kotoka International Airport before their flight" width="450" height="600" loading="lazy" decoding="async">`).join('')}</div>
+  </div>`;
 }
 function quoteCard(q) {
   return `<figure class="quote"><blockquote>${esc(q.text)}</blockquote><footer><div><b>${esc(q.who)}</b><span>${esc(q.what)}</span></div>${sampleTag(q.sample)}</footer></figure>`;
@@ -1387,6 +1411,7 @@ page('jobs-abroad', {
     ${secHead('Current openings', 'Filter by country and sector, then apply for the job that fits you.')}
     ${board('abroad')}
   </div></section>
+  <section class="sec sec-plum">${globe()}<div class="wrap">${secHead('On their way', `Clients we helped, setting off from Kotoka International Airport in ${RECENT_DEPARTURES.when}.`)}${departuresBlock()}</div></section>
   <section class="sec sec-lilac"><div class="wrap split">
     <div><h2>What employers usually ask for</h2><p class="muted">Each job lists its own requirements. Most employers also want:</p>
       ${ticks(['A Ghana passport valid for at least 2 years', 'A CV with your work history and references', 'Certificates for your trade or education', 'A medical report from an approved clinic', 'A police report'])}
@@ -1702,6 +1727,7 @@ page('testimonials', {
   title: 'Client stories', crumb: 'Testimonials', wa: 'Hello Carl-C',
   desc: 'What Carl-C clients say about our job, travel, passport and business services.',
   html: () => `${phero({ title: 'Client stories', crumb: 'Testimonials', lead: 'We publish a story only with the client’s written permission.' })}
+  <section class="sec"><div class="wrap">${secHead('Recent departures', `Clients setting off from Kotoka International Airport, ${RECENT_DEPARTURES.when}.`)}${departuresBlock()}</div></section>
   <section class="sec sec-lilac"><div class="wrap"><div class="quotes">${QUOTES.map(quoteCard).join('')}</div></div></section>
   <section class="sec"><div class="wrap split wide-left">${formHTML('testimonial', 'share')}<div><h2>Thank you</h2><p class="muted">Your story helps other people choose an agency they can trust.</p></div></div></section>`
 });
